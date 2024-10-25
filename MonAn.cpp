@@ -4,7 +4,7 @@
 
 MonAn::MonAn() : MaMon(0), TenMon(""), Gia(0.0) {}
 
-MonAn::MonAn(int ma, string ten, double gia) : MaMon(ma), TenMon(ten), Gia(gia) {}
+MonAn::MonAn(string ma, string ten, double gia) : MaMon(ma), TenMon(ten), Gia(gia) {}
 
 int MonAn::GetMaMon() const {
 	return MaMon;

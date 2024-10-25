@@ -7,7 +7,7 @@ using namespace std;
 
 class MonAn {
 	private:
-		int MaMon;
+		string MaMon;
 		string TenMon;
 		double Gia;
 	

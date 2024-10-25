@@ -13,8 +13,8 @@ class Menu {
 		vector<MonAn> DsMonAn;
 		vector<MonAn> GetDsMonAn;
 		void ThemMonAn(const MonAn& mon);
-		void XoaMonAn(int maMon);
-		void CapNhatMonAn(int maMon, string tenMoi, double giaMoi);
+		void XoaMonAn(string maMon);
+		void CapNhatMonAn(string maMon, string tenMoi, double giaMoi);
 		void HienThiMenu() const;
 		void DocMenuTuFile(const string& tenFile);
 		void GhiMenuVaoFile(const string& tenFile);

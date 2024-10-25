@@ -6,7 +6,7 @@ void Menu::ThemMonAn(const MonAn& mon) {
 	DsMonAn.push_back(mon);
 }
 
-void Menu::XoaMonAn(int maMon) {
+void Menu::XoaMonAn( string maMon) {
 	for (auto it = DsMonAn.begin(); it != DsMonAn.end(); ++it) {
 		if (it->GetMaMon() == maMon) {
 			DsMonAn.erase(it);
@@ -15,7 +15,7 @@ void Menu::XoaMonAn(int maMon) {
 	}
 }
 
-void Menu::CapNhatMonAn(int maMon, string tenMoi, double giaMoi) {
+void Menu::CapNhatMonAn(string maMon, string tenMoi, double giaMoi) {
 	for (auto& mon : DsMonAn) {
 		if (mon.GetMaMon() == maMon) {
 			mon.SetTen(tenMoi);
