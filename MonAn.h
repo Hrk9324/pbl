@@ -7,13 +7,13 @@ using namespace std;
 
 class MonAn {
 	private:
-		string MaMon;
-		string TenMon;
+		std::string MaMon;
+		std::string TenMon;
 		double Gia;
 	
 	public:
 		MonAn();
-		MonAn(int ma, string ten, double gia);
+		MonAn(const std::string& ma,const std::string& ten, double gia);
 		string GetMaMon() const;
 		string GetTenMon() const;
 		double GetGia() const;

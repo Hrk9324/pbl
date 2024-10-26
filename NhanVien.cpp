@@ -7,15 +7,15 @@ void hienThiMenuChinhNhanVien() {
 }
 
 int main() {
-    int luaChon;
-    string tenDangNhap;
+    int LuaChon;
+    string TenDangNhap;
 
     do {
         hienThiMenuChinhNhanVien();
         cout << "Nhap lua chon: ";
-        cin >> luaChon;
+        cin >> LuaChon;
         TaiKhoan Tai_Khoan;
-        switch (luaChon) {
+        switch (LuaChon) {
             case 1: {
                 if (Tai_Khoan.DangNhap("NhanVien.txt", TenDangNhap)) {
                     // chuc nang nhan vien

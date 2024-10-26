@@ -2,8 +2,17 @@
 
 #include "Menu.h"
 
-void Menu::ThemMonAn(const MonAn& mon) {
-	DsMonAn.push_back(mon);
+void Menu::ThemMonAnVaoMenu(const MonAn& monan) {
+	string tenMon;
+	double giaMon;
+	cout << "Ten Mon";
+	cin >> tenMon;
+	cout << endl;
+	cout << "Gia Mon";
+	cin >> giaMon;
+	monan.SetTen(tenMon);
+	monan.SetGia(giaMon);
+	DsMonAn.push_back(monan);
 }
 
 void Menu::XoaMonAn( string maMon) {
@@ -35,11 +44,16 @@ void Menu::DocMenuTuFile(const string& tenFile) {
 	ifstream file(tenFile);
 	if (file.is_open()) {
 		int ma;
-		string ten;
+		std::string ten;
 		double gia;
 		while (file >> ma >> ten >> gia) {
-			DsMonAn.push_back(MonAn(ma, ten , gia));
+			if (file.fail())
+			{
+				std::cerr << "khong the mo file " << tenFile << std::endl;
+			}
+			
 		}
+		DsMonAn.push_back(MonAn(static_cast<int>(ma), static_cast<const std::string&>(ten), static_cast<double>(gia)));
 		file.close();
 	}
 }

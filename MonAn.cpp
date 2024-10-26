@@ -4,9 +4,9 @@
 
 MonAn::MonAn() : MaMon(0), TenMon(""), Gia(0.0) {}
 
-MonAn::MonAn(string ma, string ten, double gia) : MaMon(ma), TenMon(ten), Gia(gia) {}
+MonAn::MonAn(std::string& ma, std::string& ten, double gia) : MaMon(ma), TenMon(ten), Gia(gia) {}
 
-int MonAn::GetMaMon() const {
+string MonAn::GetMaMon() const {
 	return MaMon;
 }
 
@@ -19,11 +19,11 @@ double MonAn::GetGia() const {
 }
 
 void MonAn::SetTen(string tenMoi) {
-	ten = tenMoi;
+	string ten = tenMoi;
 }
 
 void MonAn::SetGia(double GiaMoi) {
-	Gia = GiaMoi;
+	double Gia = GiaMoi;
 }
 
 void MonAn::HienThiMonAn() const {

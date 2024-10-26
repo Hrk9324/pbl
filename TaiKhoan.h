@@ -25,7 +25,7 @@ public:
     bool XacThuc(string mk) const {
         return MatKhau == mk;
     }
-    bool DangNhap(string, string) {
+    bool DangNhap(string TenDangNhap, string MatKhau) {
         return true;
     }
     

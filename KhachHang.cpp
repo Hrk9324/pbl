@@ -46,7 +46,7 @@ int main() {
                 break;
             }
             case 2: {
-                //DangKyKhachHang("KhachHang.txt");  thiếu hàm đăng kí mẹ r, m bảo t fix kiểu éo j.
+                //DangKyKhachHang("KhachHang.txt");  thiếu hàm đăng kí r
                 break;
             }
             case 0: {
