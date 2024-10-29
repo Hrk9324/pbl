@@ -29,8 +29,8 @@ int main() {
                 cout << "Chon so thu tu mon an muon dat: ";
                 cin >> SoThuTuMon;
 
-                if (SoThuTuMon > 0 && SoThuTuMon <= menu.GetDsMonAn.size()) {
-                    MonAn monAn = menu.GetDsMonAn[SoThuTuMon - 1];
+                if (SoThuTuMon > 0 && SoThuTuMon <= menu.GetDsMonAn().size()) {
+                    MonAn monAn = menu.GetDsMonAn()[SoThuTuMon - 1];
                     cout << "Nhap so luong muon dat: ";
                     cin >> SoLuong;
 

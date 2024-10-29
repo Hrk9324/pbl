@@ -43,7 +43,7 @@ void Menu::HienThiMenu() const {
 void Menu::DocMenuTuFile(const string& tenFile) {
 	ifstream file(tenFile);
 	if (file.is_open()) {
-		int ma;
+		std::string ma;
 		std::string ten;
 		double gia;
 		while (file >> ma >> ten >> gia) {
@@ -53,7 +53,7 @@ void Menu::DocMenuTuFile(const string& tenFile) {
 			}
 			
 		}
-		DsMonAn.push_back(MonAn(static_cast<int>(ma), static_cast<const std::string&>(ten), static_cast<double>(gia)));
+		DsMonAn.push_back(MonAn(static_cast<const std::string&>(ma), static_cast<const std::string&>(ten), static_cast<double>(gia)));
 		file.close();
 	}
 }

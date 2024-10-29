@@ -11,7 +11,7 @@ class Menu {
 
 	public:
 		vector<MonAn> DsMonAn;
-		vector<MonAn> GetDsMonAn;
+		vector<MonAn> GetDsMonAn() const;
 //		void ThemMonAn(string maMon, string tenMon, double giaMon);
 		void ThemMonAnVaoMenu( MonAn& monan);
 		void XoaMonAn(string maMon);
