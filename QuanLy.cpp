@@ -14,7 +14,7 @@ void hienThiMenuQuanLy() {
 int main() {
     int LuaChon;
     string TenDangNhap;
-    string monan;
+    MonAn monan;
 
     do {
         hienThiMenuQuanLy();

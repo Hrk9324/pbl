@@ -2,7 +2,7 @@
 
 #include "Menu.h"
 
-void Menu::ThemMonAnVaoMenu(const MonAn& monan) {
+void Menu::ThemMonAnVaoMenu(MonAn& monan) {
 	string tenMon;
 	double giaMon;
 	cout << "Ten Mon";
