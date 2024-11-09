@@ -1,17 +1,26 @@
-//Donhang.h
+#ifndef DONHANG_H
+#define DONHANG_H
 
-#pragma once
 #include "MonAn.h"
+#include "Menu.h"
+#include <iostream>
 #include <vector>
+#include <string>
 
 class DonHang {
-	private:
-		vector<MonAn> DsMonDaChon;
-		double TongTien;
-	public:
-		void ResetDonHang();
-		DonHang();
-		void ThemMonAn(const MonAn& mon);
-		double TinhTongTien() const;
-		void HienThiDonHang() ;
+private:
+    std::vector<MonAn> dsMonDaChon;
+    double tongTien;
+
+public:
+    DonHang() : tongTien(0) {}
+
+    void ThemMonAn(const MonAn& mon, int soLuong);
+    double TinhTongTien() const;
+    void HienThiDonHang() const;
+    const std::vector<MonAn>& getDanhSachMonAn() const {
+        return dsMonDaChon;
+    }
 };
+
+#endif

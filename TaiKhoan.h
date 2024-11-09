@@ -1,33 +1,24 @@
+#ifndef TAIKHOAN_H
+#define TAIKHOAN_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <unordered_map>
-
+#include <sstream>
+#include <limits>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class TaiKhoan {
 private:
-    string TenDangNhap;
-    string MatKhau;
-
+    std::unordered_set<std::string> danhSachMaKH;
 public:
-    TaiKhoan() {}
-
-    TaiKhoan(string tenDangNhap, string matKhau) {
-        this->TenDangNhap = tenDangNhap;
-        this->MatKhau = matKhau;
-    }
-
-    string GetTenDangNhap() const {
-        return TenDangNhap;
-    }
-
-    bool XacThuc(string mk) const {
-        return MatKhau == mk;
-    }
-    bool DangNhap(string TenDangNhap, string MatKhau) {
-        return true;
-    }
-    
+    TaiKhoan();
+    std::string TaoMaKhachHang();
+    bool DangNhap(const string& file, string& tenDangNhap, string& matKhau);
+    void TaoTaiKhoanNhanVien(const std::string& filePath);
+    void TaoTaiKhoanKhachHang(const std::string& filePath);
 };
 
+#endif

@@ -1,25 +1,30 @@
-//thiet ke class monan
-#pragma once
-#include <iostream>
+#ifndef MONAN_H
+#define MONAN_H
+
 #include <string>
-
 using namespace std;
-
 class MonAn {
-	private:
-		std::string MaMon;
-		std::string TenMon;
-		double Gia;
-	
-	public:
-		MonAn();
-		MonAn(const std::string& ma,const std::string& ten, double gia);
-		string GetMaMon() const;
-		string GetTenMon() const;
-		double GetGia() const;
-		void SetTen(string tenMoi);
-		void SetGia(double giaMoi);
-		void HienThiMonAn() const;
+private:
+    std::string maMon;
+    std::string tenMon;
+    double gia;
+
+public:
+    // Hàm dựng
+    MonAn(const std::string &ma = "", const std::string &ten = "", double g = 0.0);
+
+    // Setter và Getter
+    void setMaMon(const std::string &ma);
+    std::string getMaMon() const;
+
+    void setTenMon(const std::string &ten);
+    std::string getTenMon() const;
+
+    void setGia(double g);
+    double getGia() const;
+
+    // Hiển thị thông tin
+    void hienThiThongTin() const;
 };
 
-
+#endif

@@ -1,29 +1,21 @@
-//DonHang.cpp
-
 #include "DonHang.h"
+#include <iostream>
 
-DonHang::DonHang() : TongTien(0) {}
-
-void DonHang::ThemMonAn(const MonAn& mon) {
-	DsMonDaChon.push_back(mon);
-	TongTien += mon.GetGia();
+void DonHang::ThemMonAn(const MonAn& mon, int soLuong) {
+    for (int i = 0; i < soLuong; ++i) {
+        dsMonDaChon.push_back(mon);  // Thêm từng món vào danh sách món đã chọn
+    }
+    tongTien += mon.getGia() * soLuong;
 }
 
 double DonHang::TinhTongTien() const {
-	return TongTien;
+    return tongTien;
 }
 
-void DonHang::ResetDonHang() {
-    DsMonDaChon.clear();
-    TongTien = 0;
+void DonHang::HienThiDonHang() const {
+    cout << "----- Chi tiet don hang -----" << endl;
+    for (const auto& mon : dsMonDaChon) {
+        cout << "Mon: " << mon.getTenMon() << " - Gia: " << mon.getGia() << " VND" << endl;
+    }
+    cout << "Tong tien: " << tongTien << " VND" << endl;
 }
-
-
-void DonHang::HienThiDonHang() {
-	for (const auto& mon : DsMonDaChon) {
-		mon.HienThiMonAn();
-	}
-	cout << "Tong tien: " << TongTien << " VND " << endl;
-}
-
-

@@ -1,33 +1,35 @@
-//monan.cpp
-
 #include "MonAn.h"
+#include <iostream>
 
-MonAn::MonAn() : MaMon(0), TenMon(""), Gia(0.0) {}
+// Hàm dựng với tham số mặc định
+MonAn::MonAn(const std::string &ma, const std::string &ten, double g) : maMon(ma), tenMon(ten), gia(g) {}
 
-MonAn::MonAn(const std::string& ma, const std::string& ten, double gia) : MaMon(ma), TenMon(ten), Gia(gia) {}
-
-string MonAn::GetMaMon() const {
-	return MaMon;
+// Định nghĩa các setter và getter
+void MonAn::setMaMon(const std::string &ma) {
+    maMon = ma;
 }
 
-string MonAn::GetTenMon() const {
-	return TenMon;
+std::string MonAn::getMaMon() const {
+    return maMon;
 }
 
-double MonAn::GetGia() const {
-	return Gia;
+void MonAn::setTenMon(const std::string &ten) {
+    tenMon = ten;
 }
 
-void MonAn::SetTen(string tenMoi) {
-	string ten = tenMoi;
+std::string MonAn::getTenMon() const {
+    return tenMon;
 }
 
-void MonAn::SetGia(double GiaMoi) {
-	double Gia = GiaMoi;
+void MonAn::setGia(double g) {
+    gia = g;
 }
 
-void MonAn::HienThiMonAn() const {
-	cout << "Ma mon: " << MaMon << " | Ten mon: " << TenMon << " | Gia: " << Gia << "VND" << endl;
+double MonAn::getGia() const {
+    return gia;
 }
 
-
+// Hàm hiển thị thông tin món ăn
+void MonAn::hienThiThongTin() const {
+    std::cout << "Ma Mon: " << maMon << ", Ten Mon: " << tenMon << ", Gia: " << gia << " VND" << std::endl;
+}

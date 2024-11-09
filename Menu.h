@@ -1,22 +1,25 @@
-//menu.h
+#ifndef MENU_H
+#define MENU_H
 
-#pragma once
-#include "MonAn.h"
 #include <vector>
-#include <fstream>
-#include <string>
+#include <unordered_set>
+#include "MonAn.h"
 
 class Menu {
-	private:
+private:
+    std::vector<MonAn> danhSachMonAn;
+    std::unordered_set<std::string> danhSachMaMon;
 
-	public:
-		vector<MonAn> DsMonAn;
-		vector<MonAn> GetDsMonAn() const;
-//		void ThemMonAn(string maMon, string tenMon, double giaMon);
-		void ThemMonAnVaoMenu( MonAn& monan);
-		void XoaMonAn(string maMon);
-		void CapNhatMonAn(string maMon, string tenMoi, double giaMoi);
-		void HienThiMenu() const;
-		void DocMenuTuFile(const string& tenFile);
-		void GhiMenuVaoFile(const string& tenFile);
+public:
+    Menu();
+    std::string TaoMaMonAn4KyTu();
+    void ThemMonAnVaoMenu(MonAn &monan);
+    void XoaMonAnKhoiMenu(const std::string &maMon);
+    void SuaMonAnTrongMenu(const std::string &maMon);
+    void HienThiMenu() const;
+    void DocMenuTuFile();
+    void GhiMenuVaoFile(const std::string &tenFile) const;
+    std::vector<MonAn> GetDsMonAn() const;
 };
+
+#endif

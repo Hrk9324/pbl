@@ -1,10 +1,9 @@
-//HoaDon.h
-
 #pragma once
 #include "DonHang.h"
 #include <fstream>
+#include <string>
 
 class HoaDon {
-	public:
-		void InHoaDon(const DonHang& donHang, const string& MSKH, const string& TenFile);
+public:
+    void InHoaDon(const DonHang& donHang, const std::string& MSKH, const std::string& TenFile);
 };
