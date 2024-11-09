@@ -114,7 +114,7 @@ void MENU(){
         cin >> luaChon;
         switch (luaChon) {
             case 1:
-                DangNhapQuanLy();
+                DangNhapQuanLy(); // đang còn lỗi chạy đăng nhập m xem thử fix đc ko 
                 if (DangNhapQuanLy() == 1)
                 {
                     cout << "Dang nhap thanh cong, chao mung Quan Ly!" << endl;
