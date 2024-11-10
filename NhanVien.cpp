@@ -34,24 +34,7 @@ void chucNangNhanVien() {
             case 1: {
                 // Chức năng đặt hàng
                 menu.HienThiMenu();
-                int soThuTuMon, soLuong;
-                
-                cout << "Nhap so thu tu mon an muon dat: ";
-                cin >> soThuTuMon;
-                
-                if (soThuTuMon > 0 && soThuTuMon <= menu.GetDsMonAn().size()) {
-                    MonAn monAn = menu.GetDsMonAn()[soThuTuMon - 1];
-                    
-                    cout << "Nhap so luong muon dat: ";
-                    cin >> soLuong;
-
-                    donHang.ThemMonAn(monAn, soLuong);
-
-                    cout << "Da them " << soLuong << " mon '" << monAn.getTenMon() 
-                              << "' vao don hang." << endl;
-                } else {
-                    cout << "So thu tu mon an khong hop le!" << endl;
-                }
+                menu.GoiMon;
                 break;
             }
             case 2: {

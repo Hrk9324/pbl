@@ -14,8 +14,11 @@ public:
     Menu();
     std::string TaoMaMonAn4KyTu();
     void ThemMonAnVaoMenu(MonAn &monan);
+    void ThemMonAn(MonAn &monan)
     void XoaMonAnKhoiMenu(const std::string &maMon);
+    void XoaMonAn(const std::string &mamon);
     void SuaMonAnTrongMenu(const std::string &maMon);
+    void SuaMonAn(const std::string &mamon);
     void HienThiMenu() const;
     void DocMenuTuFile();
     void GhiMenuVaoFile(const std::string &tenFile) const;

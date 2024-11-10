@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 
+Menu menu;
+
 Menu::Menu() {
     std::srand(std::time(0)); // Khởi tạo hạt giống cho số ngẫu nhiên
 }
@@ -49,6 +51,19 @@ void Menu::ThemMonAnVaoMenu(MonAn &monan) {
     }
 }
 
+void Menu::ThemMonAn(MonAn &monan) {
+    monan.setMaMon(menu.TaoMaMonAn4KyTu);
+    cout << "Nhap ten mon: ";
+    cin.ignore;                 // Xóa ký tự newline còn lại trong bộ đệm
+    string tenMon;              // Tạo biến tạm để lưu tên món
+    cin >> tenMon;              // Đọc tên món vào biến tạm
+    monan.setTenMon(tenMon);    // Gán tên món vào đối tượng
+    cout << "Nhap gia: ";
+    double giaMon;              // Tạo biến tạm để lưu giá món ăn
+    monan.setGia(giaMon);       // Gán giá trị vào đối tượng monAn thông qua setter
+    menu.ThemMonAnVaoMenu(monan);
+}
+
 void Menu::XoaMonAnKhoiMenu(const std::string &maMon) {
     for (auto it = danhSachMonAn.begin(); it != danhSachMonAn.end(); ++it) {
         if (it->getMaMon() == maMon) {
@@ -58,6 +73,12 @@ void Menu::XoaMonAnKhoiMenu(const std::string &maMon) {
         }
     }
     GhiMenuVaoFile("Menu.txt");
+}
+
+void Menu::XoaMonAn(const std::string &mamon) {
+    cout << "nhap ma mon can xoa: ";
+    cin >> mamon;
+    menu.XoaMonAnKhoiMenu(mamon);
 }
 
 void Menu::SuaMonAnTrongMenu(const std::string &maMon) {
@@ -76,6 +97,12 @@ void Menu::SuaMonAnTrongMenu(const std::string &maMon) {
         }
     }
     GhiMenuVaoFile("Menu.txt");
+}
+
+void SuaMonAn(const std::string &mamon) {
+    cout << "Nhap ma mon can sua: ";
+    cin >> mamon;
+    menu.SuaMonAnTrongMenu(mamon);
 }
 
 void Menu::HienThiMenu() const {

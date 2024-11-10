@@ -24,6 +24,7 @@ void hienThiMenuChucNang() {
 
 void ChucNangQuanLi() {
     Menu menu;
+    MonAn monan;
     menu.DocMenuTuFile();
     TaiKhoan taiKhoan;
     int LuaChonQuanLi;
@@ -46,36 +47,24 @@ void ChucNangQuanLi() {
 
                     switch (LuaChonChucNang) {
                         case 1: {
-                            MonAn monAn;
-                            monAn.setMaMon(menu.TaoMaMonAn4KyTu());
-                            cout << "Nhap ten mon: ";
-                            cin.ignore();  // Xóa ký tự newline còn lại trong bộ đệm
-                            string tenMon;  // Tạo biến tạm để lưu tên món
-                            getline(cin, tenMon);  // Đọc tên món vào biến tạm
-                            monAn.setTenMon(tenMon);  // Gán tên món vào đối tượng
-
-                            cout << "Nhap gia: ";
-                            double gia;  // Tạo biến tạm để lưu giá món ăn
-                            cin >> gia;  // Đọc giá vào biến gia
-                            monAn.setGia(gia);  // Gán giá trị vào đối tượng monAn thông qua setter
-
-                            menu.ThemMonAnVaoMenu(monAn);
+                            menu.ThemMonAn(monan);
                             break;
                         }
                         case 2: {
+                            // menu.HienThiMenu();
+                            // string maMon;
+                            // cout << "Nhap ma mon can xoa: ";
+                            // cin >> maMon;
+                            // menu.XoaMonAnKhoiMenu(maMon);
                             menu.HienThiMenu();
                             string maMon;
-                            cout << "Nhap ma mon can xoa: ";
-                            cin >> maMon;
-                            menu.XoaMonAnKhoiMenu(maMon);
+                            menu.XoaMonAn(maMon);
                             break;
                         }
                         case 3: {
                             menu.HienThiMenu();
                             string maMon;
-                            cout << "Nhap ma mon can sua: ";
-                            cin >> maMon;
-                            menu.SuaMonAnTrongMenu(maMon);
+                            menu.SuaMonAn(maMon);
                             break;
                         }
                         case 4:
