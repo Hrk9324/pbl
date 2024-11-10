@@ -33,7 +33,6 @@ void MENU(){
                 break;
             }
             case 2: {
-                // DangKyKhachHang("KhachHang.txt");
                 taiKhoan.TaoTaiKhoanKhachHang("KhachHang.txt");
                 break;
             }
