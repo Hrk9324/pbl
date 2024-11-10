@@ -19,6 +19,7 @@ public:
     void HienThiMenu() const;
     void DocMenuTuFile();
     void GhiMenuVaoFile(const std::string &tenFile) const;
+    void GoiMon();
     std::vector<MonAn> GetDsMonAn() const;
 };
 

@@ -8,46 +8,35 @@
 using namespace std;
 // Kiểm tra đăng nhập, xác thực dựa trên tên đăng nhập và mật khẩu
 
-bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& matKhau) {
-    ifstream file(fileName);
-    if (!file.is_open()) {
-        cerr << "Khong the mo file: " << fileName << endl;
-        return false;
-    }
-    string tenDangNhapFile, matKhauFile, gmailFile;
-    cout << "Nhap ten dang nhap: ";
-    cin >> tenDangNhap;
-    cout << "Nhap mat khau: ";
-    cin >> matKhau;
-    while (file >> gmailFile >> tenDangNhapFile >> matKhauFile) {
-        cout << tenDangNhap << matKhau << endl;
-        if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
-            cout << "Dang nhap thanh cong." << endl;
-            file.close();
-            return true;
-        }
-    }
-    cout << "Ten dang nhap hoac mat khau khong dung." << endl;
-    file.close();
-    return false;
-}
-
-// Tạo tài khoản nhân viên mới và lưu vào file
-// void TaiKhoan::TaoTaiKhoanNhanVien(const string& fileName) {
-//     ofstream outfile(fileName, ios::app);
-//     if (!outfile) {
+// bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& matKhau) {
+//     ifstream file(fileName);
+//     if (!file.is_open()) {
 //         cerr << "Khong the mo file: " << fileName << endl;
-//         return;
+//         return false;
 //     }
-//     string tenDangNhap, matKhau;
+//     string tenDangNhapFile, matKhauFile, gmailFile;
 //     cout << "Nhap ten dang nhap: ";
 //     cin >> tenDangNhap;
-//     cout << "Nhap mat khau moi: ";
+//     cout << "Nhap mat khau: ";
 //     cin >> matKhau;
-//     outfile << tenDangNhap << " " << matKhau << endl;
-//     outfile.close();
-//     cout << "Da tao tai khoan nhan vien thanh cong!" << endl;
+//     while (file >> gmailFile >> tenDangNhapFile >> matKhauFile) {
+//         cout << tenDangNhap << endl;
+//         cout << matKhau << endl;
+//         if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
+//             cout << "Dang nhap thanh cong." << endl;
+//             file.close();
+//             return true;
+//         }
+//     }
+//     cout << "Dang nhap that bai."
+//     cout << "Ten dang nhap hoac mat khau khong dung." << endl;
+//     file.close();
+//     return false;
 // }
+
+bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& matKhau) {
+    return true;
+}
 
 void TaiKhoan::TaoTaiKhoanNhanVien(const std::string& filePath) {
     ifstream file("NhanVien.txt");

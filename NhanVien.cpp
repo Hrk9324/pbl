@@ -89,10 +89,7 @@ void MENU(){
         switch (LuaChon) {
             case 1: {
                 if (Tai_Khoan.DangNhap("NhanVien.txt", TenDangNhap, MatKhau)) { //đang còn lỗi đăng nhập m coi thử fix đc ko
-                    cout << "Dang nhap thanh cong!" << endl;
                     chucNangNhanVien();  // Gọi menu chức năng cho nhân viên
-                } else {
-                    cout << "Dang nhap that bai! Ten dang nhap hoac mat khau khong dung." << endl;
                 }
                 break;
             }

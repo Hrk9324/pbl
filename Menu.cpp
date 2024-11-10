@@ -85,6 +85,29 @@ void Menu::HienThiMenu() const {
     }
 }
 
+void Menu::GoiMon() {
+    int SoThuTuMon, SoLuong;
+    cout << "Chon so thu tu mon an muon dat: ";
+    cin >> SoThuTuMon;
+    if (SoThuTuMon > 0 && SoThuTuMon <= menu.GetDsMonAn().size()) {
+        MonAn monAn = menu.GetDsMonAn()[SoThuTuMon - 1];
+        cout << "Nhap so luong muon dat: ";
+        cin >> SoLuong;
+        // Kiểm tra số lượng hợp lệ
+        if (SoLuong > 0) {
+        donHang.ThemMonAn(monAn, SoLuong);
+        cout << "Da them " << SoLuong << " mon '" << monAn.getTenMon() << "' vao don hang." << endl;
+        donHang.HienThiDonHang();  // Hiển thị chi tiết đơn hàng
+        }
+        else {
+            cout << "So luong khong hop le!" << endl;
+        }
+    }
+    else {
+        cout << "So thu tu khong hop le!" << endl;
+    }
+}
+
 std::vector<MonAn> Menu::GetDsMonAn() const {
     return danhSachMonAn;
 }
