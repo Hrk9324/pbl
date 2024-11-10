@@ -20,6 +20,7 @@ bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& mat
     cout << "Nhap mat khau: ";
     cin >> matKhau;
     while (file >> gmailFile >> tenDangNhapFile >> matKhauFile) {
+        cout << tenDangNhap << matKhau << endl;
         if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
             cout << "Dang nhap thanh cong." << endl;
             file.close();

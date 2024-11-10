@@ -92,15 +92,15 @@ void ChucNangQuanLi() {
 bool DangNhapQuanLy() {
     string user, pass;
     string u = "admin", p = "123";
+    fflush(stdin);
     cout << "Nhap username: ";
-    getline(cin, user);
+    cin >> user;
     cout << "Nhap password: ";
-    getline(cin, pass);
-    while (user != u || pass != p)
-    {
-        return 0;
+    cin >> pass;
+    if (user == u && pass == p) {
+        return 1;
     }
-    return 1;
+    return 0;
 }
 
 void MENU(){
@@ -113,14 +113,15 @@ void MENU(){
         cout << "Nhap lua chon: ";
         cin >> luaChon;
         switch (luaChon) {
-            case 1:
-                DangNhapQuanLy(); // đang còn lỗi chạy đăng nhập m xem thử fix đc ko 
+            case 1: 
                 if (DangNhapQuanLy() == 1)
                 {
                     cout << "Dang nhap thanh cong, chao mung Quan Ly!" << endl;
                     ChucNangQuanLi();
-                    cout << "Dang nhap thanh cong, chao mung Quan Ly!" << endl;
-                    ChucNangQuanLi();
+                }
+                else
+                {
+                    cout << "Dang nhap that bai!" << endl;
                 }
                 break;
             case 0:
