@@ -1,5 +1,6 @@
 #include "MonAn.h"
 #include <iostream>
+#include <vector>
 
 // Hàm dựng với tham số mặc định
 MonAn::MonAn(const std::string &ma, const std::string &ten, double g) : maMon(ma), tenMon(ten), gia(g) {}

@@ -1,11 +1,16 @@
 #include "Menu.h"
 #include "MonAn.h"
+#include "DonHang.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
 
 Menu menu;
+
+std::vector<MonAn> Menu::GetDsMonAn() const {
+    return danhSachMonAn;
+}
 
 Menu::Menu() {
     std::srand(std::time(0)); // Khởi tạo hạt giống cho số ngẫu nhiên
@@ -24,7 +29,20 @@ std::string Menu::TaoMaMonAn4KyTu() {
     return maMon;
 }
 
-void Menu::DocMenuTuFile(){
+void Menu::DocMenuTuFile(const string& fileName) {
+    ifstream file(fileName);
+    if (!file.is_open())
+    {
+        cerr << "Khong the mo file: " << fileName << endl;
+    }
+    string maMon, tenMon;
+    double Gia;
+    while (file >> maMon >> tenMon >> Gia)
+    {
+        MonAn monan(maMon, tenMon, Gia);
+        danhSachMonAn.push_back(monan);
+    }
+    file.close();
     
 }
 
@@ -51,20 +69,22 @@ void Menu::ThemMonAnVaoMenu(MonAn &monan) {
     }
 }
 
-void Menu::ThemMonAn(MonAn &monan) {
-    monan.setMaMon(menu.TaoMaMonAn4KyTu);
+void Menu::ThemMonAn() {
+    MonAn monan;
+    monan.setMaMon(TaoMaMonAn4KyTu());
     cout << "Nhap ten mon: ";
-    cin.ignore;                 // Xóa ký tự newline còn lại trong bộ đệm
+    cin.ignore();                 // Xóa ký tự newline còn lại trong bộ đệm
     string tenMon;              // Tạo biến tạm để lưu tên món
     cin >> tenMon;              // Đọc tên món vào biến tạm
     monan.setTenMon(tenMon);    // Gán tên món vào đối tượng
     cout << "Nhap gia: ";
     double giaMon;              // Tạo biến tạm để lưu giá món ăn
+    cin >> giaMon;
     monan.setGia(giaMon);       // Gán giá trị vào đối tượng monAn thông qua setter
-    menu.ThemMonAnVaoMenu(monan);
+    ThemMonAnVaoMenu(monan);
 }
 
-void Menu::XoaMonAnKhoiMenu(const std::string &maMon) {
+void Menu::XoaMonAnKhoiMenu(std::string &maMon) {
     for (auto it = danhSachMonAn.begin(); it != danhSachMonAn.end(); ++it) {
         if (it->getMaMon() == maMon) {
             danhSachMonAn.erase(it);
@@ -75,13 +95,14 @@ void Menu::XoaMonAnKhoiMenu(const std::string &maMon) {
     GhiMenuVaoFile("Menu.txt");
 }
 
-void Menu::XoaMonAn(const std::string &mamon) {
+void Menu::XoaMonAn() {
+    string mamon;
     cout << "nhap ma mon can xoa: ";
     cin >> mamon;
     menu.XoaMonAnKhoiMenu(mamon);
 }
 
-void Menu::SuaMonAnTrongMenu(const std::string &maMon) {
+void Menu::SuaMonAnTrongMenu(std::string &maMon) {
     for (auto &mon : danhSachMonAn) {
         if (mon.getMaMon() == maMon) {
             std::string tenMoi;
@@ -99,13 +120,15 @@ void Menu::SuaMonAnTrongMenu(const std::string &maMon) {
     GhiMenuVaoFile("Menu.txt");
 }
 
-void SuaMonAn(const std::string &mamon) {
+void Menu::SuaMonAn() {
+    string mamon;
     cout << "Nhap ma mon can sua: ";
     cin >> mamon;
     menu.SuaMonAnTrongMenu(mamon);
 }
 
 void Menu::HienThiMenu() const {
+    DocMenuTuFile("Menu.txt");
     for (const auto &mon : danhSachMonAn) {
         cout << "Ma Mon: " << mon.getMaMon() << ", Ten Mon: " << mon.getTenMon()
                   << ", Gia: " << mon.getGia() << endl;
@@ -114,7 +137,8 @@ void Menu::HienThiMenu() const {
 
 void Menu::GoiMon() {
     int SoThuTuMon, SoLuong;
-    cout << "Chon so thu tu mon an muon dat: ";
+    DonHang donHang;
+    cout << "Nhap ma mon an muon dat: ";
     cin >> SoThuTuMon;
     if (SoThuTuMon > 0 && SoThuTuMon <= menu.GetDsMonAn().size()) {
         MonAn monAn = menu.GetDsMonAn()[SoThuTuMon - 1];
@@ -135,6 +159,3 @@ void Menu::GoiMon() {
     }
 }
 
-std::vector<MonAn> Menu::GetDsMonAn() const {
-    return danhSachMonAn;
-}

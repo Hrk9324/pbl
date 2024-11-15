@@ -1,6 +1,7 @@
 #include "TaiKhoan.h"
 #include "Menu.h"
 #include "DonHang.h"
+#include "MonAn.h"
 #include <fstream>
 #include <string>
 #include <cstring>
@@ -25,7 +26,7 @@ void hienThiMenuChucNang() {
 void ChucNangQuanLi() {
     Menu menu;
     MonAn monan;
-    menu.DocMenuTuFile();
+    // menu.DocMenuTuFile();
     TaiKhoan taiKhoan;
     int LuaChonQuanLi;
     do {
@@ -47,7 +48,7 @@ void ChucNangQuanLi() {
 
                     switch (LuaChonChucNang) {
                         case 1: {
-                            menu.ThemMonAn(monan);
+                            menu.ThemMonAn();
                             break;
                         }
                         case 2: {
@@ -56,15 +57,14 @@ void ChucNangQuanLi() {
                             // cout << "Nhap ma mon can xoa: ";
                             // cin >> maMon;
                             // menu.XoaMonAnKhoiMenu(maMon);
-                            menu.HienThiMenu();
-                            string maMon;
-                            menu.XoaMonAn(maMon);
+                            // menu.HienThiMenu();
+                            menu.XoaMonAn();
                             break;
                         }
                         case 3: {
-                            menu.HienThiMenu();
-                            string maMon;
-                            menu.SuaMonAn(maMon);
+                            // menu.HienThiMenu();
+                            // string maMon;
+                            menu.SuaMonAn();
                             break;
                         }
                         case 4:

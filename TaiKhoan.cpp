@@ -8,34 +8,29 @@
 using namespace std;
 // Kiểm tra đăng nhập, xác thực dựa trên tên đăng nhập và mật khẩu
 
-// bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& matKhau) {
-//     ifstream file(fileName);
-//     if (!file.is_open()) {
-//         cerr << "Khong the mo file: " << fileName << endl;
-//         return false;
-//     }
-//     string tenDangNhapFile, matKhauFile, gmailFile;
-//     cout << "Nhap ten dang nhap: ";
-//     cin >> tenDangNhap;
-//     cout << "Nhap mat khau: ";
-//     cin >> matKhau;
-//     while (file >> gmailFile >> tenDangNhapFile >> matKhauFile) {
-//         cout << tenDangNhap << endl;
-//         cout << matKhau << endl;
-//         if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
-//             cout << "Dang nhap thanh cong." << endl;
-//             file.close();
-//             return true;
-//         }
-//     }
-//     cout << "Dang nhap that bai."
-//     cout << "Ten dang nhap hoac mat khau khong dung." << endl;
-//     file.close();
-//     return false;
-// }
-
-bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhap, string& matKhau) {
+bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhapFile, string& matKhauFile) {
+    ifstream file(fileName);
+    if (!file.is_open()) {
+        cerr << "Khong the mo file: " << fileName << endl;
+        return false;
+    }
+    string tenDangNhap, matKhau;
+    cout << "Nhap ten dang nhap: ";
+    cin >> tenDangNhap;
+    cout << "Nhap mat khau: ";
+    cin >> matKhau;
+    while (file >> tenDangNhapFile >> matKhauFile) {
+        if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
+            cout << "Dang nhap thanh cong." << endl;
+            file.close();
+            return true;
+        }
+    }
+    cout << "Dang nhap that bai.";
+    cout << "Ten dang nhap hoac mat khau khong dung." << endl;
+    file.close();
     return false;
+
 }
 
 void TaiKhoan::TaoTaiKhoanNhanVien(const std::string& filePath) {
@@ -54,8 +49,8 @@ void TaiKhoan::TaoTaiKhoanNhanVien(const std::string& filePath) {
         string hoTen, username, password;
         if (iss >> maNV) {
             iss.ignore();
-            getline(iss, hoTen, ',');
-            getline(iss, username, ',');
+            getline(iss, hoTen, ' ');
+            getline(iss, username, ' ');
             getline(iss, password);
             maxMaNhanVien = max(maxMaNhanVien, maNV);
         }
@@ -81,7 +76,7 @@ void TaiKhoan::TaoTaiKhoanNhanVien(const std::string& filePath) {
     cout << "Nhap password: ";
     getline(cin, password); // Đọc password với khả năng chứa khoảng trắng
 
-    outFile << maNV << ", " << hoTen << ", " << username << ", " << password << endl;
+    outFile << maNV << " " << hoTen << " " << username << " " << password << endl;
     outFile.close();
 
     cout << "Da tao tai khoan nhan vien " << hoTen << " voi ma so: " << maNV << endl;
@@ -127,9 +122,18 @@ void TaiKhoan::TaoTaiKhoanKhachHang(const std::string& filePath){
     getline(cin, user);
     cout << "nhap password: ";
     getline(cin, pass);
-
     outFile << maKH << ", " << gmail << ", " << user << ", " << pass << endl;
     outFile.close();
 
     cout << "da tao tai khoan thanh cong" << endl;
+}
+
+void TaiKhoan::XoaTaiKhoanNhanVien(const std::string& filePath) {
+    ifstream file("NhanVien.txt");
+    if (!file.is_open())
+    {
+        cerr << "Khong the mo file de xoa tai khoan nhan vien" << endl;
+        return;
+    }
+    string MaNV;
 }

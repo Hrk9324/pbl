@@ -33,8 +33,8 @@ void chucNangNhanVien() {
         switch (luaChon) {
             case 1: {
                 // Chức năng đặt hàng
-                menu.HienThiMenu();
-                menu.GoiMon;
+                // menu.HienThiMenu();
+                menu.GoiMon();
                 break;
             }
             case 2: {
