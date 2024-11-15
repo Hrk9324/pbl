@@ -15,13 +15,13 @@ public:
     std::string TaoMaMonAn4KyTu();
     void ThemMonAnVaoMenu(MonAn &monan);
     void ThemMonAn();
-    void XoaMonAnKhoiMenu(std::string &maMon);
+    void XoaMonAnKhoiMenu(string &maMon);
     void XoaMonAn();
-    void SuaMonAnTrongMenu(std::string &maMon);
+    void SuaMonAnTrongMenu(string &maMon);
     void SuaMonAn();
-    void HienThiMenu() const;
-    void DocMenuTuFile(const string& fileName) ;
-    void GhiMenuVaoFile(const std::string &tenFile) const;
+    void HienThiMenu() ;
+    void DocMenuTuFile(const string& fileName)  ;
+    void GhiMenuVaoFile(const string &tenFile) const;
     void GoiMon();
     std::vector<MonAn> GetDsMonAn() const;
 };

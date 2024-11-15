@@ -29,23 +29,6 @@ std::string Menu::TaoMaMonAn4KyTu() {
     return maMon;
 }
 
-void Menu::DocMenuTuFile(const string& fileName) {
-    ifstream file(fileName);
-    if (!file.is_open())
-    {
-        cerr << "Khong the mo file: " << fileName << endl;
-    }
-    string maMon, tenMon;
-    double Gia;
-    while (file >> maMon >> tenMon >> Gia)
-    {
-        MonAn monan(maMon, tenMon, Gia);
-        danhSachMonAn.push_back(monan);
-    }
-    file.close();
-    
-}
-
 void Menu::GhiMenuVaoFile(const std::string &tenFile) const {
     std::ofstream file(tenFile);
     if (file.is_open()) {
@@ -127,7 +110,25 @@ void Menu::SuaMonAn() {
     menu.SuaMonAnTrongMenu(mamon);
 }
 
-void Menu::HienThiMenu() const {
+void Menu::DocMenuTuFile(const string& fileName) {
+    ifstream file(fileName);
+    if (!file.is_open())
+    {
+        cerr << "Khong the mo file: " << fileName << endl;
+        return;
+    }
+    string maMon, tenMon;
+    double Gia;
+    while (file >> maMon >> tenMon >> Gia)
+    {
+        MonAn monan(maMon, tenMon, Gia);
+        danhSachMonAn.push_back(monan);
+    }
+    file.close();
+    
+}
+
+void Menu::HienThiMenu() {
     DocMenuTuFile("Menu.txt");
     for (const auto &mon : danhSachMonAn) {
         cout << "Ma Mon: " << mon.getMaMon() << ", Ten Mon: " << mon.getTenMon()
