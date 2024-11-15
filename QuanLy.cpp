@@ -26,7 +26,6 @@ void hienThiMenuChucNang() {
 void ChucNangQuanLi() {
     Menu menu;
     MonAn monan;
-    // menu.DocMenuTuFile();
     TaiKhoan taiKhoan;
     int LuaChonQuanLi;
     do {
@@ -69,6 +68,10 @@ void ChucNangQuanLi() {
                         }
                         case 4:
                             menu.HienThiMenu();
+                            break;
+
+                        default:
+                            cout <<"Lua chon khong hop le." << endl;
                             break;
                     }
                 } while (LuaChonChucNang != 0);

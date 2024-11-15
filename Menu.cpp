@@ -117,6 +117,7 @@ void Menu::DocMenuTuFile(const string& fileName) {
         cerr << "Khong the mo file: " << fileName << endl;
         return;
     }
+    danhSachMonAn.clear();
     string maMon, tenMon;
     double Gia;
     while (file >> maMon >> tenMon >> Gia)
@@ -131,8 +132,8 @@ void Menu::DocMenuTuFile(const string& fileName) {
 void Menu::HienThiMenu() {
     DocMenuTuFile("Menu.txt");
     for (const auto &mon : danhSachMonAn) {
-        cout << "Ma Mon: " << mon.getMaMon() << ", Ten Mon: " << mon.getTenMon()
-                  << ", Gia: " << mon.getGia() << endl;
+        cout << "Ma Mon: " << mon.getMaMon() << " " << "Ten Mon: " << mon.getTenMon()
+                << " "  << "Gia: " << mon.getGia() << "VND" << endl;
     }
 }
 
@@ -143,12 +144,13 @@ void Menu::GoiMon() {
     cin >> SoThuTuMon;
     if (SoThuTuMon > 0 && SoThuTuMon <= menu.GetDsMonAn().size()) {
         MonAn monAn = menu.GetDsMonAn()[SoThuTuMon - 1];
+
         cout << "Nhap so luong muon dat: ";
         cin >> SoLuong;
         // Kiểm tra số lượng hợp lệ
         if (SoLuong > 0) {
         donHang.ThemMonAn(monAn, SoLuong);
-        cout << "Da them " << SoLuong << " mon '" << monAn.getTenMon() << "' vao don hang." << endl;
+        cout << "Da them " << SoLuong << " mon " << monAn.getTenMon() << " vao don hang." << endl;
         donHang.HienThiDonHang();  // Hiển thị chi tiết đơn hàng
         }
         else {

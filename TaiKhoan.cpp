@@ -122,7 +122,7 @@ void TaiKhoan::TaoTaiKhoanKhachHang(const std::string& filePath){
     getline(cin, user);
     cout << "nhap password: ";
     getline(cin, pass);
-    outFile << maKH << ", " << gmail << ", " << user << ", " << pass << endl;
+    outFile << maKH << " " << gmail << " " << user << " " << pass << endl;
     outFile.close();
 
     cout << "da tao tai khoan thanh cong" << endl;
