@@ -16,10 +16,11 @@ private:
 public:
     TaiKhoan();
     std::string TaoMaKhachHang();
-    bool DangNhap(const string& file, string& tenDangNhap, string& matKhau);
+    int DangNhap(const string& file, string& tenDangNhap, string& matKhau);
     void TaoTaiKhoanNhanVien(const std::string& filePath);
     void TaoTaiKhoanKhachHang(const std::string& filePath);
     void XoaTaiKhoanNhanVien(const std::string& filePath);
+    void TaoMaHoaDon(const std::string& filePath);
 };
 
 #endif

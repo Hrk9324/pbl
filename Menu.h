@@ -20,9 +20,10 @@ public:
     void SuaMonAnTrongMenu(string &maMon);
     void SuaMonAn();
     void HienThiMenu() ;
-    void DocMenuTuFile(const string& fileName)  ;
+    bool DocMenuTuFile(const string& fileName)  ;
     void GhiMenuVaoFile(const string &tenFile) const;
     void GoiMon();
+    void ThemMonAnTuFile();
     std::vector<MonAn> GetDsMonAn() const;
 };
 

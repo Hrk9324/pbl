@@ -33,14 +33,17 @@ void chucNangNhanVien() {
         switch (luaChon) {
             case 1: {
                 // Chức năng đặt hàng
-                // menu.HienThiMenu();
+                menu.HienThiMenu();
                 menu.GoiMon();
                 break;
             }
             case 2: {
                 // In hóa đơn
-                std::string maSoKhachHang = "MSKH1234"; // Ví dụ mã khách hàng
-                hoaDon.InHoaDon(donHang, maSoKhachHang, "HoaDon.txt");
+                // std::string maSoKhachHang = "MSKH1234"; // Ví dụ mã khách hàng
+                // string maKH = getm
+                
+                string MSKH = hoaDon.DocMSKH("KhachHang.txt");
+                hoaDon.InHoaDon(donHang, MSKH, "HoaDon.txt");
                 break;
             }
             case 3: {

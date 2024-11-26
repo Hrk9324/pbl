@@ -51,25 +51,19 @@ void ChucNangQuanLi() {
                             break;
                         }
                         case 2: {
-                            // menu.HienThiMenu();
-                            // string maMon;
-                            // cout << "Nhap ma mon can xoa: ";
-                            // cin >> maMon;
-                            // menu.XoaMonAnKhoiMenu(maMon);
-                            // menu.HienThiMenu();
+                            menu.HienThiMenu();
                             menu.XoaMonAn();
                             break;
                         }
                         case 3: {
-                            // menu.HienThiMenu();
-                            // string maMon;
+                            menu.HienThiMenu();
                             menu.SuaMonAn();
                             break;
                         }
                         case 4:
                             menu.HienThiMenu();
                             break;
-
+                            
                         default:
                             cout <<"Lua chon khong hop le." << endl;
                             break;

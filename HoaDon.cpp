@@ -21,3 +21,17 @@ void HoaDon::InHoaDon(const DonHang& donHang, const std::string& MSKH, const std
     outFile.close();
     cout << "Hoa don da duoc in ra tep: " << TenFile << endl;
 }
+
+string HoaDon::DocMSKH(const std::string& TenFile) {
+    ifstream inFile(TenFile);
+    if (!inFile) {
+        cerr << "Khong the mo tep de doc ma so khach hang!" << endl;
+        return "";
+    }
+
+    string MSKH;
+    getline(inFile, MSKH); // Giả sử MSKH nằm trên dòng đầu tiên
+    inFile.close();
+
+    return MSKH;
+}

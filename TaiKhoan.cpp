@@ -8,26 +8,31 @@
 using namespace std;
 // Kiểm tra đăng nhập, xác thực dựa trên tên đăng nhập và mật khẩu
 
-bool TaiKhoan::DangNhap(const string& fileName, string& tenDangNhapFile, string& matKhauFile) {
+int TaiKhoan::DangNhap(const string& fileName, string& tenDangNhapFile, string& matKhauFile) {
     ifstream file(fileName);
     if (!file.is_open()) {
         cerr << "Khong the mo file: " << fileName << endl;
         return false;
     }
+    int maKH;
     string tenDangNhap, matKhau;
     cout << "Nhap ten dang nhap: ";
     cin >> tenDangNhap;
     cout << "Nhap mat khau: ";
     cin >> matKhau;
-    while (file >> tenDangNhapFile >> matKhauFile) {
-        if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
-            cout << "Dang nhap thanh cong." << endl;
-            file.close();
-            return true;
+
+    string line;
+    while (getline(file, line)) {
+        istringstream iss(line);
+        if (iss >> maKH >> tenDangNhapFile >> matKhauFile) {
+            if (tenDangNhap == tenDangNhapFile && matKhau == matKhauFile) {
+                cout << "Dang nhap thanh cong!" << endl;
+                file.close();
+                return maKH;
+            }
         }
     }
-    cout << "Dang nhap that bai.";
-    cout << "Ten dang nhap hoac mat khau khong dung." << endl;
+    cout << "Dang nhap that bai. Ten dang nhap hoac mat khau khong dung." << endl;
     file.close();
     return false;
 
@@ -122,7 +127,7 @@ void TaiKhoan::TaoTaiKhoanKhachHang(const std::string& filePath){
     getline(cin, user);
     cout << "nhap password: ";
     getline(cin, pass);
-    outFile << maKH << " " << gmail << " " << user << " " << pass << endl;
+    outFile << maKH << " " << user << " " << pass << " " << gmail << endl;
     outFile.close();
 
     cout << "da tao tai khoan thanh cong" << endl;

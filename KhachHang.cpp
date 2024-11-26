@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "HoaDon.h"
 
 void hienThiMenuChinhKhachHang() {
     cout << "----- CHAO MUNG DEN UNG DUNG DAT MON -----" << endl;
@@ -12,13 +13,18 @@ void hienThiMenuChinhKhachHang() {
     cout << "0. Thoat" << endl;
 }
 
+
+
 void MENU(){
     int LuaChon;
     std::string TenDangNhap, MatKhau;
     Menu menu;
+    HoaDon hoaDon;
     DonHang donHang;
     TaiKhoan taiKhoan;
-
+    menu.DocMenuTuFile("Menu.txt");
+    // menu.ThemMonAnTuFile();
+    // system("pause");
     do {
         hienThiMenuChinhKhachHang();
         cout << "Nhap lua chon: ";
@@ -26,9 +32,12 @@ void MENU(){
 
         switch (LuaChon) {
             case 1: {
-                if (taiKhoan.DangNhap("KhachHang.txt", TenDangNhap, MatKhau)) { //không đăng nhập được
+                if (taiKhoan.DangNhap("KhachHang.txt", TenDangNhap, MatKhau)) {
+                    cout << "Moi quy khach dat mon!" << endl;
                     menu.HienThiMenu();
                     menu.GoiMon(); 
+                    string MSKH = hoaDon.DocMSKH("khachHang.txt");
+                    hoaDon.InHoaDon(donHang, MSKH, "HoaDon.txt");
                 }
                 break;
             }
