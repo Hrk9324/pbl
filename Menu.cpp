@@ -57,41 +57,41 @@ void Menu::ThemMonAnVaoMenu(MonAn &monan) {
     
 }
 
-void Menu::ThemMonAnTuFile() {
-    ifstream file("Menu.txt");
-    string line;
-    if(file.is_open()) {
-        while(!file.eof()) {
-            getline(file, line);
-            cout << line << endl;
-            MonAn newMonAn;
-            string maMon, tenMon, gia;
-            int index = 0;
-            for(int i = index; i < line.size(); ++i) {
-                if(line[i] == ',') {
-                    maMon = line.substr(index, i - index);
-                    cout << maMon << endl;
-                    index = i + 1;
-                    break;
-                }
-            }
-            for(int i = index; i < line.size(); ++i) {
-                if(line[i] == ',') {
-                    tenMon = line.substr(index, i - index);
-                    cout << tenMon << endl;
-                    index = i + 1;
-                    break;
-                }
-            }
-            gia = line.substr(index, line.size() - index);
-            cout << gia << endl;
-            newMonAn.setMaMon(maMon);
-            newMonAn.setTenMon(tenMon);
-            newMonAn.setGia(0);
-            this->ThemMonAnVaoMenu(newMonAn);
-        }
-    }
-}
+// void Menu::ThemMonAnTuFile() {
+//     ifstream file("Menu.txt");
+//     string line;
+//     if(file.is_open()) {
+//         while(!file.eof()) {
+//             getline(file, line);
+//             cout << line << endl;
+//             MonAn newMonAn;
+//             string maMon, tenMon, gia;
+//             int index = 0;
+//             for(int i = index; i < line.size(); ++i) {
+//                 if(line[i] == ',') {
+//                     maMon = line.substr(index, i - index);
+//                     cout << maMon << endl;
+//                     index = i + 1;
+//                     break;
+//                 }
+//             }
+//             for(int i = index; i < line.size(); ++i) {
+//                 if(line[i] == ',') {
+//                     tenMon = line.substr(index, i - index);
+//                     cout << tenMon << endl;
+//                     index = i + 1;
+//                     break;
+//                 }
+//             }
+//             gia = line.substr(index, line.size() - index);
+//             cout << gia << endl;
+//             newMonAn.setMaMon(maMon);
+//             newMonAn.setTenMon(tenMon);
+//             newMonAn.setGia(0);
+//             this->ThemMonAnVaoMenu(newMonAn);
+//         }
+//     }
+// }
 
 void Menu::ThemMonAn() {
     MonAn monan;

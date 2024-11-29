@@ -1,6 +1,6 @@
-5479 bun_bo 30000
 9992 pho 30000
 3195 chao 20000
 8441 bun_dau_mam_tom 40000
 0024 com_hen 15000
-0798 bun_hen 15000
+0798 com_cuon 15000
+7122 cari_ga 50000
