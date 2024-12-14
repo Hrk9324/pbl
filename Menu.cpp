@@ -183,8 +183,8 @@ void Menu::HienThiMenu() {
         return;
     }
     for (const auto &mon : danhSachMonAn) {
-        cout << "Ma Mon: " << mon.getMaMon() << " " << "Ten Mon: " << mon.getTenMon()
-                << " "  << "Gia: " << mon.getGia() << "VND" << endl;
+        cout << "Ma Mon: " << mon.getMaMon() << " " << " - Ten Mon: " << mon.getTenMon()
+                << " "  << " - Gia: " << mon.getGia() << " VND" << endl;
     }
 }
 
@@ -220,21 +220,6 @@ void Menu::GoiMon() {
             cout << "Khong the dat mon!" << endl;
         }
         file.close();
-    }
-
-
-
-    // cout << menu.GetDsMonAn().size() << endl;
-    // if (maMon > 0 && maMon <= menu.GetDsMonAn().size()) {
-    //     MonAn monAn = menu.GetDsMonAn()[maMon ];
-    //     cout << "Nhap so luong muon dat: ";
-    //     cin >> SoLuong;
-    //     // Kiểm tra số lượng hợp lệ
-    //     if (SoLuong > 0) {
-    //     donHang.ThemMonAn(monAn, SoLuong);
-    //     cout << "Da them " << SoLuong << " mon " << monAn.getTenMon() << " vao don hang." << endl;
-    //     donHang.HienThiDonHang();  // Hiển thị chi tiết đơn hàng
-    //     }
-        
+    }       
 }
 
