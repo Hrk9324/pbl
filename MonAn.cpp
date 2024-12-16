@@ -1,36 +1,45 @@
 #include "MonAn.h"
-#include <iostream>
-#include <vector>
 
-// Hàm dựng với tham số mặc định
-MonAn::MonAn(const std::string &ma, const std::string &ten, double g) : maMon(ma), tenMon(ten), gia(g) {}
+// Constructor mặc định
+MonAn::MonAn() : maMon(0), tenMon(""), giaTien(0.0) {}
 
-// Định nghĩa các setter và getter
-void MonAn::setMaMon(const std::string &ma) {
-    maMon = ma;
-}
+// Constructor đầy đủ tham số
+MonAn::MonAn(int maMon, const std::string& tenMon, double giaTien)
+    : maMon(maMon), tenMon(tenMon), giaTien(giaTien) {}
 
-std::string MonAn::getMaMon() const {
+// Getter và Setter
+int MonAn::getMaMon() const {
     return maMon;
 }
 
-void MonAn::setTenMon(const std::string &ten) {
-    tenMon = ten;
+void MonAn::setMaMon(int maMon) {
+    this->maMon = maMon;
 }
 
 std::string MonAn::getTenMon() const {
     return tenMon;
 }
 
-void MonAn::setGia(double g) {
-    gia = g;
+void MonAn::setTenMon(const std::string& tenMon) {
+    this->tenMon = tenMon;
 }
 
-double MonAn::getGia() const {
-    return gia;
+double MonAn::getGiaTien() const {
+    return giaTien;
 }
 
-// Hàm hiển thị thông tin món ăn
+void MonAn::setGiaTien(double giaTien) {
+    this->giaTien = giaTien;
+}
+
+// Hiển thị thông tin món ăn
 void MonAn::hienThiThongTin() const {
-    std::cout << "Ma Mon: " << maMon << ", Ten Mon: " << tenMon << ", Gia: " << gia << " VND" << std::endl;
+    std::cout << std::setw(3) << std::setfill('0') << maMon << ", "
+              << tenMon << ", "
+              << giaTien << " VND\n";
+}
+
+// Toán tử so sánh
+bool MonAn::operator<(const MonAn& other) const {
+    return maMon < other.maMon;
 }
