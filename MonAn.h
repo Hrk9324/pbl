@@ -9,6 +9,7 @@
 #include <cctype>
 #include <stdio.h>
 #include <conio.h>
+#include "HamTienIch.h"
 using namespace std;
 class MonAn {
 	int maMon;

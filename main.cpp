@@ -13,7 +13,7 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 		cout << "Nhap lua chon: ";
 		string choice_str;
 		cin >> choice_str;
-		while (!all_of(choice_str.begin(), choice_str.end(), isdigit)) {
+		while (!kiemTraSo(choice_str)) {
 			cout << "Vui long nhap mot so hop le!\n";
 			cin >> choice_str;
 		}
@@ -42,7 +42,7 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 
 		cout << "Nhap lua chon: ";
 		cin >> choice_str;
-		while (!all_of(choice_str.begin(), choice_str.end(), isdigit)) {
+		while (!kiemTraSo(choice_str)) {
 			cout << "Vui long nhap mot so hop le!\n";
 			cout << "Nhap lua chon: ";
 			cin >> choice_str;
@@ -76,6 +76,7 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 }
 
 int main() {
+	// g++ .\DSTaiKhoan.cpp .\HamTienIch.cpp .\KhachHang.cpp .\Menu.cpp .\MonAn.cpp .\NhanVien.cpp .\QuanLy.cpp .\TaiKhoan.cpp .\HoaDon.cpp .\main.cpp
 	// Khởi tạo menu và danh sách tài khoản
 	Menu menu;
 	menu.docMenuFromFile();

@@ -7,7 +7,7 @@ void QuanLy::themMonAnVaoMenu(Menu& menu) {
 	string gia_str;
 	cout << "Nhap gia mon an: ";
 	cin >> gia_str;
-	while (!all_of(gia_str.begin(), gia_str.end(), isdigit)) {
+	while (!kiemTraSo(gia_str)) {
 		cout << "Vui long nhap mot so hop le!\n";
 		cout << "Nhap ma mon an can xoa: ";
 		cin >> gia_str;
@@ -22,7 +22,7 @@ void QuanLy::xoaMonAnKhoiMenu(Menu& menu) {
 	string maMonAn_str;
 	cout << "Nhap ma mon an can xoa: ";
 	cin >> maMonAn_str;
-	while (!all_of(maMonAn_str.begin(), maMonAn_str.end(), isdigit)) {
+	while (!kiemTraSo(maMonAn_str)) {
 		cout << "Vui long nhap mot so hop le!\n";
 		cout << "Nhap ma mon an can xoa: ";
 		cin >> maMonAn_str;
@@ -36,7 +36,7 @@ void QuanLy::suaMonAnTrongMenu(Menu& menu) {
 	string maMonAn_str;
 	cout << "Nhap ma mon an can sua: ";
 	cin >> maMonAn_str;
-	while (!all_of(maMonAn_str.begin(), maMonAn_str.end(), isdigit)) {
+	while (!kiemTraSo(maMonAn_str)) {
 		cout << "Vui long nhap mot so hop le!\n";
 		cout << "Nhap ma mon an can sua: ";
 		cin >> maMonAn_str;
@@ -49,7 +49,7 @@ void QuanLy::suaMonAnTrongMenu(Menu& menu) {
 	string gia_str;
 	cout << "Nhap gia mon an: ";
 	cin >> gia_str;
-	while (!all_of(gia_str.begin(), gia_str.end(), isdigit)) {
+	while (!kiemTraSo(gia_str)) {
 		cout << "Vui long nhap mot so hop le!\n";
 		cout << "Nhap ma mon an can xoa: ";
 		cin >> gia_str;

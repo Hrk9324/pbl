@@ -154,7 +154,7 @@ void DSTaiKhoan::xoaTaiKhoanNhanVien() {
 	string ma_str;
 	cout << "Nhap ma tai khoan nhan vien can xoa: ";
     cin >> ma_str;
-    while (!all_of(ma_str.begin(), ma_str.end(), isdigit)) {
+    while (!kiemTraSo(ma_str)) {
         cout << "Vui long nhap mot so hop le!\n";
         cout << "Nhap ma tai khoan nhan vien can xoa: ";
         cin >> ma_str;
@@ -182,7 +182,7 @@ void DSTaiKhoan::suaTaiKhoanNhanVien() {
     string ma_str;
     cout << "Nhap ma tai khoan nhan vien can sua: ";
     cin >> ma_str;
-    while (!all_of(ma_str.begin(), ma_str.end(), isdigit)) {
+    while (!kiemTraSo(ma_str)) {
         cout << "Vui long nhap mot so hop le!\n";
         cout << "Nhap ma tai khoan nhan vien can sua: ";
         cin >> ma_str;

@@ -142,7 +142,7 @@ void Menu::goiMon(HoaDon &hoaDon) {
     int maMon, soLuong;
     cout << "Nhap ma mon muon goi: ";
     cin >> maMon_str;
-    while (!all_of(maMon_str.begin(), maMon_str.end(), isdigit)) {
+    while (!kiemTraSo(maMon_str)) {
         cout << "Vui long nhap mot so hop le!\n";
         cout << "Nhap ma mon muon goi: ";
         cin >> maMon_str;
@@ -155,7 +155,7 @@ void Menu::goiMon(HoaDon &hoaDon) {
         if (monAn.getMaMon() == maMon) {
             cout << "Nhap so luong: ";
             cin >> soLuong_str;
-            while (!all_of(soLuong_str.begin(), soLuong_str.end(), isdigit)) {
+            while (!kiemTraSo(soLuong_str)) {
                 cout << "Vui long nhap mot so hop le!\n";
                 cout << "Nhap so luong: ";
                 cin >> soLuong_str;
