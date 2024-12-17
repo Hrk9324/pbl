@@ -1,6 +1,8 @@
-9992 pho 30000
-3195 chao 20000
-8441 bun_dau_mam_tom 40000
-0024 com_hen 15000
-0798 com_cuon 15000
-7122 cari_ga 50000
+9992,pho,30000 VND
+3195,chao,20000 VND
+8441,bun_dau_mam_tom,40000 VND
+24,com_hen,15000 VND
+798,com_cuon,15000 VND
+7122,cari_ga,50000 VND
+1,Sushi,25000 VND
+9993,Bun Bo HUE,20000 VND

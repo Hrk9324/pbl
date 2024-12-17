@@ -1,64 +1,30 @@
-#ifndef TAIKHOAN_H
-#define TAIKHOAN_H
-
-#include <string>
-#include <vector>
-#include <conio.h>
-
-// Lớp Tài Khoản
+#pragma once
+#include "Menu.h"
 class TaiKhoan {
+protected:
+	// -1: Khong xac dinh, 0: Khach hang, 1: Nhan vien, 2: Quan ly
+    int role;
+    int maTaiKhoan;
+    string tenNguoiDung;
+    string username;
+    string password;
 public:
-    // Tạo tài khoản cho nhân viên
-	// static void taoTaiKhoanNhanVien();
-	// static void taoTaiKhoanNhanVien(const std::string& tenNhanVien, const std::string& username, const std::string& password);
-	void taoTaiKhoanNhanVien(const std::string& tenNhanVien, const std::string& username, const std::string& password);
-    
-    // Xóa tài khoản nhân viên
-    static void xoaTaiKhoanNhanVien();
-    
-    // Tạo tài khoản cho khách hàng
-    static void taoTaiKhoanKhachHang();
-    
-    // Xóa tài khoản khách hàng
-    static void xoaTaiKhoanKhachHang();
-    
-    // Đăng nhập vào hệ thống
-    static bool dangNhap();
-    
-    //Hàm ẩn mật khẩu
-    static std::string getPassword();
-    
-private:
-    // Lưu thông tin tài khoản (username, password) cho nhân viên và khách hàng
-    static void ghiTaiKhoanNhanVienToFile();
-    static void ghiTaiKhoanKhachHangToFile();
-    
-    // Đọc thông tin tài khoản từ file
-    static void docTaiKhoanNhanVienFromFile();
-    static void docTaiKhoanKhachHangFromFile();
-    
-    // Lưu thông tin vào mảng để dễ dàng xử lý
-    struct TaiKhoanNhanVien {
-        int maNhanVien;
-        std::string tenNhanVien;
-        std::string username;
-        std::string password;
-    };
+    TaiKhoan();
+    TaiKhoan(int, int, const string&, const string&, const string&);
 
-    struct TaiKhoanKhachHang {
-        int maKhachHang;
-        std::string tenKhachHang;
-        std::string username;
-        std::string password;
-    };
+	int getRole() const;
+    int getMaTaiKhoan() const;
+    string getTenNguoiDung() const;
+    string getUsername() const;
+    string getPassword() const;
 
-    // Mảng lưu các tài khoản nhân viên và khách hàng
-    static std::vector<TaiKhoanNhanVien> danhSachNhanVien;
-    static std::vector<TaiKhoanKhachHang> danhSachKhachHang;
+    void setRole(int);
+    void setMaTaiKhoan(int);
+    void setTenNguoiDung(const string&);
+    void setUsername(const string&);
+    void setPassword(const string&);
 
-    // Tạo mã tự động cho nhân viên và khách hàng
-    static int maNhanVienCounter;
-    static int maKhachHangCounter;
+    virtual void hienThiChucNang();
+    virtual void xuLyChucNang(int, Menu&, int&);
 };
 
-#endif // TAIKHOAN_H

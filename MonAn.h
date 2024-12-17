@@ -1,30 +1,30 @@
-#ifndef MONAN_H
-#define MONAN_H
-
+#pragma once
 #include <string>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <cctype>
+#include <stdio.h>
+#include <conio.h>
 using namespace std;
 class MonAn {
-private:
-    std::string maMon;
-    std::string tenMon;
-    double gia;
-
+	int maMon;
+	string tenMon;
+	int gia;
 public:
-    // Hàm dựng
-    MonAn(const std::string &ma = "", const std::string &ten = "", double g = 0.0);
+	MonAn(int = 0, const string& = "", int = 0);
+	void setMaMon(int);
+	int getMaMon() const;
 
-    // Setter và Getter
-    void setMaMon(const std::string &ma);
-    std::string getMaMon() const;
+	void setTenMon(const string&);
+	string getTenMon() const;
 
-    void setTenMon(const std::string &ten);
-    std::string getTenMon() const;
+	void setGia(int);
+	int getGia() const;
 
-    void setGia(double g);
-    double getGia() const;
-
-    // Hiển thị thông tin
-    void hienThiThongTin() const;
+	void hienThiThongTin() const;
+	bool operator<(const MonAn& other) const;
 };
-
-#endif

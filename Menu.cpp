@@ -1,167 +1,176 @@
 #include "Menu.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <cctype>
-// Khởi tạo static maMonCounter
-int Menu::maMonCounter = 1;
-// Constructor: Đọc menu từ file khi khởi tạo
+
 Menu::Menu() {
-    docMenuFromFile();
+    danhSachMonAn.clear();
+    maMonCounter = 0;
 }
 
 void Menu::docMenuFromFile() {
-    std::ifstream file("Menu.txt");
+    ifstream file("Menu.txt");
     if (!file.is_open()) {
-        std::cerr << "Không thể mở file Menu.txt!" << std::endl;
+        cerr << "Khong the mo file Menu.txt!" << endl;
         return;
     }
 
-    std::string line;
+    string line;
     int maxMaMon = 0;
-
-    while (std::getline(file, line)) {
-        std::istringstream stream(line);
-        int maMon;
-        std::string tenMon;
-        int giaTien;
-
-        char comma1, comma2;  // Để xử lý dấu phẩy giữa các trường
-        if (stream >> maMon >> comma1 && comma1 == ',' && std::getline(stream, tenMon, ',') && stream >> giaTien) {
-            // Xóa khoảng trắng đầu và cuối của tên món ăn
-            tenMon.erase(tenMon.begin(), std::find_if(tenMon.begin(), tenMon.end(), [](unsigned char c) { return !std::isspace(c); }));
-            tenMon.erase(std::find_if(tenMon.rbegin(), tenMon.rend(), [](unsigned char c) { return !std::isspace(c); }).base(), tenMon.end());
-
-            if (!tenMon.empty() && !stream.fail()) {
-                MonAn monAn(maMon, tenMon, giaTien);
-                danhSachMonAn.push_back(monAn);
-                maxMaMon = std::max(maxMaMon, maMon);
-            }
-        } else {
-            std::cerr << "Dòng không hợp lệ: " << line << std::endl;
-        }
+    while(getline(file, line)) {
+        istringstream buffer(line);
+        string maMon_str;
+        string tenMon;
+        string giaTien_str;
+        getline(buffer, maMon_str, ',');
+        getline(buffer, tenMon, ',');
+        getline(buffer, giaTien_str, '\n');
+        int maMon = stoi(maMon_str);
+        int giaTien = stoi(giaTien_str);
+        MonAn monAn;
+        monAn.setMaMon(maMon);
+        monAn.setTenMon(tenMon);
+        monAn.setGia(giaTien);
+        danhSachMonAn.push_back(monAn);
+        maxMaMon = max(maxMaMon, monAn.getMaMon());
     }
-
-    maMonCounter = maxMaMon + 1;  // Đặt mã món tiếp theo
+    maMonCounter = maxMaMon + 1;
     file.close();
 }
 
 void Menu::ghiMenuToFile() {
-    std::ofstream file("Menu.txt", std::ios::trunc);
+    ofstream file("Menu.txt", ios::trunc);
     if (!file.is_open()) {
-        std::cerr << "Không thể mở file Menu.txt để ghi!" << std::endl;
-        return; // Exit the function early
+        cerr << "Khong the mo file Menu.txt de ghi!" << endl;
+        return;
     }
     for (const auto& monAn : danhSachMonAn) {
         file << monAn.getMaMon() << ","
-             << monAn.getTenMon() << ","
-             << monAn.getGiaTien() << " VND\n";
+            << monAn.getTenMon() << ","
+            << monAn.getGia() << " VND\n";
     }
     file.close();
 }
 
-bool Menu::themMonAn(const std::string& tenMon, int giaTien) {
-    // Kiểm tra đầu vào
+bool Menu::timMonAn(int maMon) const {
+	for (const auto& monAn : danhSachMonAn) {
+		if (monAn.getMaMon() == maMon) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Menu::themMonAn(const string& tenMon, int giaTien) {
+    // Kiem tra dau vao
     if (tenMon.empty() || giaTien <= 0) {
-        std::cerr << "Thông tin món ăn không hợp lệ. Vui lòng kiểm tra lại!" << std::endl;
+        cerr << "Thong tin mon an khong hop le. Vui long kiem tra lai!" << endl;
         return false;
     }
 
-    // Kiểm tra trùng lặp tên món ăn
+    // Kiem tra trung lap ten mon an
     for (const auto& monAn : danhSachMonAn) {
         if (monAn.getTenMon() == tenMon) {
-            std::cerr << "Món ăn đã tồn tại trong menu!" << std::endl;
+            cerr << "Mon an da ton tai trong menu!" << endl;
             return false;
         }
     }
 
-    // Tạo món ăn mới và thêm vào danh sách
+
+    // Tao mon an moi va them vao danh sach
     MonAn monAn(maMonCounter, tenMon, giaTien);
     danhSachMonAn.push_back(monAn);
     maMonCounter++;
 
-    // Chỉ ghi thêm món ăn mới vào file, không cần ghi lại toàn bộ danh sách
-    std::ofstream file("Menu.txt", std::ios::app); // Mở file ở chế độ ghi thêm
+    // Chi ghi them mon an moi vao file, khong can ghi lai toan bo danh sach
+    ofstream file("Menu.txt", ios::app); // Mo file o che do ghi them
     if (file.is_open()) {
-        file << monAn.getMaMon() << ", " << monAn.getTenMon() << ", " << monAn.getGiaTien() << "\n";
+        file << monAn.getMaMon() << "," << monAn.getTenMon() << "," << monAn.getGia() << "\n";
         file.close();
-    } else {
-        std::cerr << "Không thể ghi dữ liệu vào file Menu.txt!" << std::endl;
+    }
+    else {
+        cerr << "Khong the ghi du lieu vao file Menu.txt!" << endl;
         return false;
     }
 
-    std::cout << "Thêm món ăn '" << tenMon << "' vào menu thành công!" << std::endl;
+    cout << "Them mon an '" << tenMon << "' vao menu thanh cong!" << endl;
     return true;
 }
 
-
 bool Menu::xoaMonAn(int maMon) {
-    auto it = std::find_if(danhSachMonAn.begin(), danhSachMonAn.end(),
-        [maMon](const MonAn& monAn) {
-            return monAn.getMaMon() == maMon;
-        });
-    if (it != danhSachMonAn.end()) {
-        danhSachMonAn.erase(it);
-        ghiMenuToFile();
-        std::cout << "Đã xóa món ăn với mã " << maMon << ".\n";
-        return true;
-    }
-    std::cout << "Không tìm thấy món ăn với mã " << maMon << ".\n";
-    return false;
-}
-
-bool Menu::suaMonAn(int maMon, const std::string& tenMonMoi, int giaTienMoi) {
-    for (auto& monAn : danhSachMonAn) {
-        if (monAn.getMaMon() == maMon) {
-            if (tenMonMoi.empty() || giaTienMoi < 0) {
-                std::cerr << "Thông tin món ăn không hợp lệ." << std::endl;
-                return false;
-            }
-            monAn.setTenMon(tenMonMoi);
-            monAn.setGiaTien(giaTienMoi);
+    for (int i = 0; i < danhSachMonAn.size(); ++i) {
+        if (danhSachMonAn[i].getMaMon() == maMon) {
+            danhSachMonAn.erase(danhSachMonAn.begin() + i, danhSachMonAn.begin() + i + 1);
             ghiMenuToFile();
-            std::cout << "Đã sửa món ăn với mã " << maMon << ".\n";
+            cout << "Da xoa mon an voi ma " << maMon << ".\n";
             return true;
         }
     }
-    std::cout << "Không tìm thấy món ăn với mã " << maMon << ".\n";
+    cout << "Khong tim thay mon an voi ma " << maMon << ".\n";
+    return false;
+}
+
+bool Menu::suaMonAn(int maMon, const string& tenMonMoi, int giaTienMoi) {
+    for (auto& monAn : danhSachMonAn) {
+        if (monAn.getMaMon() == maMon) {
+            if (tenMonMoi.empty() || giaTienMoi <= 0) {
+                cerr << "Thong tin mon an khong hop le." << endl;
+                return false;
+            }
+            monAn.setTenMon(tenMonMoi);
+            monAn.setGia(giaTienMoi);
+            ghiMenuToFile();
+            cout << "Da sua mon an voi ma " << maMon << ".\n";
+            return true;
+        }
+    }
+    cout << "Khong tim thay mon an voi ma " << maMon << ".\n";
     return false;
 }
 
 void Menu::hienThiMenu() const {
-    std::cout << "Danh sách món ăn trong menu:\n";
+    cout << "Danh sach mon an trong menu:\n";
+	cout << left << setw(8) << "Ma Mon" << "|"
+		<< setw(30) << "Ten Mon" << "|"
+		<< "Gia\n";
+	cout << string(8, '-') << "|" << string(30, '-') << "|" << string(20, '-') << endl;
     for (const auto& monAn : danhSachMonAn) {
         monAn.hienThiThongTin();
     }
 }
 
-void Menu::goiMon() {
+void Menu::goiMon(HoaDon &hoaDon) {
     hienThiMenu();
+    string maMon_str, soLuong_str;
     int maMon, soLuong;
-    std::cout << "Nhập mã món muốn gọi: ";
-    while (!(std::cin >> maMon)) {
-        std::cout << "Vui lòng nhập một số hợp lệ!\n";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cout << "Nhap ma mon muon goi: ";
+    cin >> maMon_str;
+    while (!all_of(maMon_str.begin(), maMon_str.end(), isdigit)) {
+        cout << "Vui long nhap mot so hop le!\n";
+        cout << "Nhap ma mon muon goi: ";
+        cin >> maMon_str;
     }
+	cin.ignore();
+    maMon = stoi(maMon_str);
+
     bool monTimThay = false;
     for (const auto& monAn : danhSachMonAn) {
         if (monAn.getMaMon() == maMon) {
-            std::cout << "Nhập số lượng: ";
-            while (!(std::cin >> soLuong) || soLuong <= 0) {
-                std::cout << "Vui lòng nhập số lượng hợp lệ (lớn hơn 0)!\n";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Nhap so luong: ";
+            cin >> soLuong_str;
+            while (!all_of(soLuong_str.begin(), soLuong_str.end(), isdigit)) {
+                cout << "Vui long nhap mot so hop le!\n";
+                cout << "Nhap so luong: ";
+                cin >> soLuong_str;
             }
-            double tongTien = monAn.getGiaTien() * soLuong;
-            std::cout << "Tổng tiền cho " << monAn.getTenMon() << " là: "
-                      << tongTien << " VND\n";
+            cin.ignore();
+            soLuong = stoi(soLuong_str);
+            int tongTien = monAn.getGia() * soLuong;
+            cout << "Tong tien cho " << monAn.getTenMon()
+                << " la: " << tongTien << " VND\n";
+			hoaDon.themMonAn(monAn, soLuong);
             monTimThay = true;
             break;
         }
     }
     if (!monTimThay) {
-        std::cout << "Mã món không hợp lệ!\n";
+        cout << "Ma mon khong hop le!\n";
     }
 }

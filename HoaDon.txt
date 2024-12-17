@@ -1,3 +1,6 @@
-Ma so khach hang: 190028 asan 123 N_V_A
-Chi tiet don hang:
-Tong tien: 0 VND
+Thong tin hoa don:
+Ma Mon  |Ten Mon                       |Gia                 |So Luong
+--------|------------------------------|--------------------|------------
+9992    |pho                           |30000 VND           |5   
+--------------------------------------------------------------------------
+Tong tien: 150000 VND

@@ -1,37 +1,39 @@
 #include "HoaDon.h"
-#include <iostream>
-#include <fstream>
 
-void HoaDon::InHoaDon(const DonHang& donHang, const std::string& MSKH, const std::string& TenFile) {
-    std::ofstream outFile(TenFile);
-    if (!outFile) {
-        std::cerr << "Khong the mo tep de ghi hoa don!" << endl;
-        return;
-    }
-
-    outFile << "Ma so khach hang: " << MSKH << endl;
-    outFile << "Chi tiet don hang:" << endl;
-
-    // Duyệt qua danh sách món ăn trong đơn hàng và ghi từng món vào file
-    for (const auto& mon : donHang.getDanhSachMonAn()) {
-        outFile << "- " << mon.getTenMon() << ": " << mon.getGia() << " VND" << endl;
-    }
-    outFile << "Tong tien: " << donHang.TinhTongTien() << " VND" << endl;
-
-    outFile.close();
-    cout << "Hoa don da duoc in ra tep: " << TenFile << endl;
+void HoaDon::themMonAn(MonAn monAn, int soLuong) {
+	danhSachMonAn.push_back({monAn, soLuong});
 }
 
-string HoaDon::DocMSKH(const std::string& TenFile) {
-    ifstream inFile(TenFile);
-    if (!inFile) {
-        cerr << "Khong the mo tep de doc ma so khach hang!" << endl;
-        return "";
-    }
+void HoaDon::clearHoaDon() {
+	danhSachMonAn.clear();
+}
 
-    string MSKH;
-    getline(inFile, MSKH); // Giả sử MSKH nằm trên dòng đầu tiên
-    inFile.close();
+double HoaDon::tinhTongTien() {
+	double tongTien = 0;
+	for (const auto& monAn : danhSachMonAn) {
+		tongTien += monAn.first.getGia() * monAn.second;
+	}
+	return tongTien;
+}
 
-    return MSKH;
+void HoaDon::inHoaDon() {
+	ofstream file("HoaDon.txt");
+	if (file.is_open()) {
+		file << "Thong tin hoa don:" << endl;
+		file << left << setw(8) << "Ma Mon" << "|"
+			<< setw(30) << "Ten Mon" << "|"
+			<< setw(20) << "Gia" << "|"
+			<< "So Luong" << endl;
+		file << string(8, '-') << "|" << string(30, '-') << "|" << string(20, '-') << "|" << string(12, '-') << endl;
+		for (const auto& monAn : danhSachMonAn) {
+			file << left << setw(8) << monAn.first.getMaMon() << "|"
+				<< setw(30) << monAn.first.getTenMon() << "|"
+				<< setw(20) << to_string(monAn.first.getGia()) + " VND" << "|"
+				<< setw(4) << monAn.second << endl;
+		}
+		file << string(8 + 30 + 20 + 12 + 3, '-') << endl;
+		file << "Tong tien: " << tinhTongTien() << " VND" << endl;
+		cout << "In hoa don thanh cong vao file: HoaDon.txt" << endl;
+		file.close();
+	}
 }

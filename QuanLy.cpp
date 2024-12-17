@@ -1,155 +1,108 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include "TaiKhoan.h"
-#include "MonAn.h"
-#include "Menu.h"
+#include "QuanLy.h"
 
-using namespace std;
-
-// Hàm đăng nhập quản lý
-bool dangNhapQuanLy() {
-    string username, password;
-
-    cout << "Nhap username: ";
-    getline(cin, username);
-
-    cout << "Nhap password: ";
-    password = TaiKhoan::getPassword();  // Dùng hàm getPassword để ẩn mật khẩu
-
-    if (username == "administrator" && password == "adminn123") {
-        cout << "Dang nhap thanh cong!" << endl;
-        return true;
-    } else {
-        cout << "Username hoac password sai!" << endl;
-        return false;
-    }
+void QuanLy::themMonAnVaoMenu(Menu& menu) {
+	string tenMonAn;
+	cout << "Nhap ten mon an: ";
+	getline(cin, tenMonAn);
+	string gia_str;
+	cout << "Nhap gia mon an: ";
+	cin >> gia_str;
+	while (!all_of(gia_str.begin(), gia_str.end(), isdigit)) {
+		cout << "Vui long nhap mot so hop le!\n";
+		cout << "Nhap ma mon an can xoa: ";
+		cin >> gia_str;
+	}
+	int gia = stoi(gia_str);
+	cin.ignore();
+	menu.themMonAn(tenMonAn, gia);
 }
 
-// Hàm tạo tài khoản nhân viên
-//void taoTaiKhoanNhanVien() {
-//    TaiKhoan::taoTaiKhoanNhanVien();
-//}
-void taoTaiKhoanNhanVien() {
-    string tenNhanVien, username, password;
-
-    cout << "Nhap ten nhan vien: ";
-    cin.ignore();  // Bỏ qua ký tự newline còn lại trong bộ đệm
-    getline(cin, tenNhanVien);  // Đọc tên nhân viên
-
-    cout << "Nhap username: ";
-    getline(cin, username);  // Đọc username
-
-    cout << "Nhap password: ";
-    getline(cin, password);  // Đọc password
-
-    // Tạo đối tượng TaiKhoan và gọi hàm tạo tài khoản
-    TaiKhoan taiKhoan;
-    taiKhoan.taoTaiKhoanNhanVien(tenNhanVien, username, password);
+void QuanLy::xoaMonAnKhoiMenu(Menu& menu) {
+	menu.hienThiMenu();
+	string maMonAn_str;
+	cout << "Nhap ma mon an can xoa: ";
+	cin >> maMonAn_str;
+	while (!all_of(maMonAn_str.begin(), maMonAn_str.end(), isdigit)) {
+		cout << "Vui long nhap mot so hop le!\n";
+		cout << "Nhap ma mon an can xoa: ";
+		cin >> maMonAn_str;
+	}
+	int maMonAn = stoi(maMonAn_str);
+	menu.xoaMonAn(maMonAn);
 }
 
-
-// Hàm xóa tài khoản nhân viên
-void xoaTaiKhoanNhanVien() {
-    TaiKhoan::xoaTaiKhoanNhanVien();
+void QuanLy::suaMonAnTrongMenu(Menu& menu) {
+	menu.hienThiMenu();
+	string maMonAn_str;
+	cout << "Nhap ma mon an can sua: ";
+	cin >> maMonAn_str;
+	while (!all_of(maMonAn_str.begin(), maMonAn_str.end(), isdigit)) {
+		cout << "Vui long nhap mot so hop le!\n";
+		cout << "Nhap ma mon an can sua: ";
+		cin >> maMonAn_str;
+	}
+	int maMonAn = stoi(maMonAn_str);
+	cin.ignore();
+	string tenMonAn;
+	cout << "Nhap ten mon an: ";
+	getline(cin, tenMonAn);
+	string gia_str;
+	cout << "Nhap gia mon an: ";
+	cin >> gia_str;
+	while (!all_of(gia_str.begin(), gia_str.end(), isdigit)) {
+		cout << "Vui long nhap mot so hop le!\n";
+		cout << "Nhap ma mon an can xoa: ";
+		cin >> gia_str;
+	}
+	int gia = stoi(gia_str);
+	cin.ignore();
+	menu.suaMonAn(maMonAn, tenMonAn, gia);
 }
 
-// Hàm thêm món ăn vào menu
-void themMonAnVaoMenu(Menu& menu) {
-    string tenMon;
-    int giaTien;
-
-    cout << "Nhap ten mon an: ";
-    cin.ignore();
-    getline(cin, tenMon);
-
-    cout << "Nhap gia tien: ";
-    cin >> giaTien;
-
-    menu.themMonAn(tenMon, giaTien);  // Gọi hàm thêm món ăn vào menu
+void QuanLy::hienThiChucNang() {
+	cout << "---- CHUC NANG QUAN LY----" << endl;
+	cout << "1. Hien thi danh sach mon an" << endl;
+	cout << "2. Them mon an vao menu" << endl;
+	cout << "3. Xoa mon an khoi menu" << endl;
+	cout << "4. Sua mon an trong menu" << endl;
+	cout << "5. Hien thi danh sach nhan vien" << endl;
+	cout << "6. Them tai khoan nhan vien" << endl;
+	cout << "7. Xoa tai khoan nhan vien" << endl;
+	cout << "8. Sua tai khoan nhan vien" << endl;
+	cout << "0. Dang xuat" << endl;
 }
 
-// Hàm xóa món ăn khỏi menu
-void xoaMonAnKhoiMenu(Menu& menu) {
-	int maMon;
-	std::cout << "Nhap ma mon an muon xoa: ";
-	std::cin >> maMon;
-	menu.xoaMonAn(maMon);  // Gọi hàm xóa món ăn với mã đã nhập
-
-}
-
-void suaMonAnTrongMenu(Menu& menu) {
-    int maMon;
-    string tenMonMoi;
-    int giaTienMoi;
-
-    cout << "Nhap ma mon an can sua: ";
-    cin >> maMon;
-
-    cout << "Nhap ten mon an moi: ";
-    cin.ignore();
-    getline(cin, tenMonMoi);
-
-    cout << "Nhap gia tien moi: ";
-    cin >> giaTienMoi;
-
-    // Gọi phương thức suaMonAn với các tham số
-    menu.suaMonAn(maMon, tenMonMoi, giaTienMoi);
-}
-
-
-// Hàm menu quản lý
-void hienThiMenuQuanLy() {
-    Menu menu;
-    menu.docMenuFromFile();  // Đọc dữ liệu menu từ file khi khởi động chương trình
-    int luaChon;
-
-    while (true) {
-        cout << "\n===== MENU QUAN LY =====" << endl;
-        cout << "1. Tao tai khoan nhan vien" << endl;
-        cout << "2. Xoa tai khoan nhan vien" << endl;
-        cout << "3. Them mon an vao menu" << endl;
-        cout << "4. Xoa mon an khoi menu" << endl;
-        cout << "5. Sua mon an trong menu" << endl;
-        cout << "6. Thoat" << endl;
-
-        cout << "Nhap lua chon: ";
-        cin >> luaChon;
-
-        switch (luaChon) {
-            case 1:
-                taoTaiKhoanNhanVien();
-                break;
-            case 2:
-                xoaTaiKhoanNhanVien();
-                break;
-            case 3:
-                themMonAnVaoMenu(menu);
-                break;
-            case 4:
-                xoaMonAnKhoiMenu(menu);
-                break;
-            case 5:
-                suaMonAnTrongMenu(menu);
-                break;
-            case 6:
-                menu.ghiMenuToFile();  // Ghi lại menu vào file trước khi thoát
-                cout << "Thoat chuong trinh!" << endl;
-                return;
-            default:
-                cout << "Lua chon khong hop le!" << endl;
-        }
-    }
-}
-
-// Hàm main
-int main() {
-    if (dangNhapQuanLy()) {
-        hienThiMenuQuanLy();  // Sau khi đăng nhập thành công, hiển thị menu quản lý
-    } else {
-        cout << "Dang nhap khong thanh cong. Thoat chuong trinh!" << endl;
-    }
-
-    return 0;
+void QuanLy::xuLyChucNang(int choice, Menu& menu, int& result) {
+	switch (choice) {
+	case 1:
+		menu.hienThiMenu();
+		break;
+	case 2:
+		themMonAnVaoMenu(menu);
+		break;
+	case 3:
+		xoaMonAnKhoiMenu(menu);
+		break;
+	case 4:
+		suaMonAnTrongMenu(menu);
+		break;
+	case 5:
+		result = 4;
+		break;
+	case 6:
+		result = 1;
+		break;
+	case 7:
+		result = 2;
+		break;
+	case 8:
+		result = 3;
+		break;
+	case 0:
+		result = 0;
+		break;
+	default:
+		cout << "Chuc nang khong ton tai" << endl;
+		break;
+	}
 }
