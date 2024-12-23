@@ -21,4 +21,6 @@ public:
     void docMenuFromFile();
     // Hàm ghi menu vào file Menu.txt
     void ghiMenuToFile();
+    void Gioithieu();
+    
 };

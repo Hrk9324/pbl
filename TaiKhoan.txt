@@ -1,11 +1,8 @@
-U,190028,asan,N_V_A,123
-U,559765,bsan,N_V_B,123
-U,3,nguyen nhat hoang,nguyennhatking,123
-U,4,nguyen duy han,ndh,123
-S,5,dang thanh binh,dtb,123
 A,888,I am admin,admin,123
 U,7,nhat king,test,123
 U,8,ngo nhatking,nnk,123
 U,9,ngo Nhat King,nnk2,123
 U,12,test,test,test
-S,11,toi la nhan vien,nhanvien,123
+S,12,guen nhat king,nhatking,123
+S,11,nguyen thanh binh,thanhbinh,123
+U,8,nguyen thanh binh,thanhbinh1,123

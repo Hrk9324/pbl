@@ -1,6 +1,8 @@
 #include "KhachHang.h"
 
 void KhachHang::hienThiChucNang() {
+	Menu menu;
+	menu.Gioithieu();
 	cout << "---- CHUC NANG KHACH HANG----" << endl;	
 	cout << "1. Goi mon" << endl;
 	cout << "2. In hoa don" << endl;

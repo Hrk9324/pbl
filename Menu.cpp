@@ -167,10 +167,42 @@ void Menu::goiMon(HoaDon &hoaDon) {
                 << " la: " << tongTien << " VND\n";
 			hoaDon.themMonAn(monAn, soLuong);
             monTimThay = true;
+            hoaDon.ghiDoanhThu(tongTien);
             break;
         }
     }
     if (!monTimThay) {
         cout << "Ma mon khong hop le!\n";
-    }
+    }   
+}
+
+void Menu::Gioithieu() {
+	cout << "\t\t\t";
+	for (int i = 0; i <= 50; ++i){
+		cout << "-";
+	}
+	cout << endl;
+	cout << "\t\t\t|            DO AN CO SO LAP TRINH PBL2           |\n";
+	cout << "\t\t\t|THUC HIEN BOI: NGUYEN THANH BINH - NGUYEN DUY HAN|\n";
+	cout << "\t\t\t";
+	for (int i = 0; i <= 50; ++i){
+		cout << "-";
+	}
+	cout << endl;
+	cout << endl;
+	cout <<"\t+-------------------------+ 			 +===================================+\n";
+	cout <<"\t|   D                     | 			 ||                                 ||\n";
+	cout <<"\t| B A C H K H O A         | 			 ||    TRUONG DAI HOC BACH KHOA     ||\n";
+	cout <<"\t|   N -----**-------      |  			 ||        DAI HOC DA NANG          ||\n";
+	cout <<"\t|   A ------***-----      | 			 ||                                 ||\n";
+	cout <<"\t|   N -------****---      |  			 ||     KHOA CONG NGHE THONG TIN    ||\n";
+	cout <<"\t|   G -------*****--      | 			 ||                                 ||\n";
+	cout <<"\t|     ------******--      | 			 ||     UNG DUNG DAT MON AN VA      ||\n";
+	cout <<"\t|     -----******---      | 			 ||       THANH TOAN DON HANG       ||\n";
+	cout <<"\t|                         | 			 ||                                 ||\n";
+	cout <<"\t+-------------------------+ 			 +===================================+\n";
+	for (int j = 0; j <= 100; ++j){
+		cout << "=";
+	}
+	cout << endl;
 }

@@ -1,4 +1,4 @@
-9992,pho,30000 VND
+9992,pho ga,30000 VND
 3195,chao,20000 VND
 8441,bun_dau_mam_tom,40000 VND
 24,com_hen,15000 VND
@@ -6,3 +6,4 @@
 7122,cari_ga,50000 VND
 1,Sushi,25000 VND
 9993,Bun Bo HUE,20000 VND
+9994,chao hen,20000 VND

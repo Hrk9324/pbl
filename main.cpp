@@ -6,6 +6,7 @@ TaiKhoan* taiKhoanHienTai = nullptr;
 bool working(DSTaiKhoan &DSTK, Menu &menu) {
 	if (taiKhoanHienTai == nullptr) {
 		system("cls");
+		menu.Gioithieu();
 		cout << "---- DANH SACH CHUC NANG ----\n";
 		cout << "1. Dang nhap\n";
 		cout << "2. Dang ky\n";
@@ -27,6 +28,13 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 			DSTK.taoTaiKhoanKhachHang();
 			break;
 		case 0:
+			for (int i = 0; i <= 100; i++)
+			{
+				cout << "-";
+			}
+			cout << endl;
+			cout << "Hen gap lai, chuc ban co mot ngay tot lanh!";
+			cout << endl;
 			return false;
 		default:
 			cout << "Lua chon khong hop le!\n";
@@ -76,12 +84,12 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 }
 
 int main() {
-	// g++ .\DSTaiKhoan.cpp .\HamTienIch.cpp .\KhachHang.cpp .\Menu.cpp .\MonAn.cpp .\NhanVien.cpp .\QuanLy.cpp .\TaiKhoan.cpp .\HoaDon.cpp .\main.cpp
 	// Khởi tạo menu và danh sách tài khoản
 	Menu menu;
 	menu.docMenuFromFile();
 	DSTaiKhoan DSTK;
 	DSTK.docDSTaiKhoanFromFile();
+	// menu.Gioithieu();
 	// Bắt đầu chương trình
 	while (working(DSTK, menu));
 	// Lưu dữ liệu

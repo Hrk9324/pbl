@@ -30,6 +30,16 @@ string DSTaiKhoan::getPassword() {
     return password;
 }
 
+bool DSTaiKhoan::KiemTraUsernam(const std::vector<TaiKhoan*>& DSTK, const std::string& username){
+    for (int i = 0; i < DSTK.size(); i++){
+        if (DSTK[i]->getUsername() == username)
+        {      
+		    return true;
+        }
+    }
+    return false;
+}
+
 void DSTaiKhoan::docDSTaiKhoanFromFile() {
     ifstream file("TaiKhoan.txt");
     if (!file.is_open()) {
@@ -93,9 +103,27 @@ void DSTaiKhoan::taoTaiKhoanKhachHang() {
     string tenTaiKhoan, username, password;
     cout << "Nhap ten khach hang: ";
     getline(cin, tenTaiKhoan);
+    
+    bool UsernameHopLe = false;
+    while (!UsernameHopLe)
+    {
+        cout << "Nhap username: ";
+        getline(cin, username);
 
-    cout << "Nhap username: ";
-    getline(cin, username);
+        if (KiemTraUsernam(DSTK, username))
+        {
+            cout << "username da ton tai!" << endl;
+            cout << "nhap username khac" << endl;
+        }
+        else
+        {
+            UsernameHopLe = true;
+            cout << "Username hop le" << endl;
+        }
+    }
+    
+    // cout << "Nhap username: ";
+    // getline(cin, username);
 
     cout << "Nhap password: ";
     password = getPassword();  // Dùng hàm để ẩn mật khẩu
@@ -151,6 +179,7 @@ void DSTaiKhoan::xoaTaiKhoan(int ma) {
 }
 
 void DSTaiKhoan::xoaTaiKhoanNhanVien() {
+    hienThiDSTaiKhoanNhanVien();
 	string ma_str;
 	cout << "Nhap ma tai khoan nhan vien can xoa: ";
     cin >> ma_str;
@@ -179,6 +208,7 @@ void DSTaiKhoan::suaTaiKhoan(int ma, string ten, string username, string passwor
 }
 
 void DSTaiKhoan::suaTaiKhoanNhanVien() {
+    hienThiDSTaiKhoanNhanVien();
     string ma_str;
     cout << "Nhap ma tai khoan nhan vien can sua: ";
     cin >> ma_str;
@@ -210,16 +240,22 @@ TaiKhoan* DSTaiKhoan::dangNhap() {
 
     for (auto& kh : DSTK) {
         if (kh->getUsername() == username && kh->getPassword() == password) {
+
+            
+
             cout << "Dang nhap thanh cong cho khach hang: " << kh->getTenNguoiDung() << endl;
             return kh;  // Trả về con trỏ đến khách hàng
         }
     }
+
+
+
     cout << "Username hoac password sai!" << endl;
     return nullptr;  // Trả về nullptr nếu đăng nhập không thành công
 
 }
 
-void DSTaiKhoan::hienThiDSTaiKhoan() {
+void DSTaiKhoan::hienThiDSTaiKhoanKhachHang() {
     cout << "Danh sach khach hang: \n";
     cout << left << setw(8) << "Ma KH" << '|'
         << setw(30) << "Ten KH" << '|'

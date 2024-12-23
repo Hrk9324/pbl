@@ -15,6 +15,8 @@ public:
     void ghiDSTaiKhoanToFile();
     // Tạo tài khoản khách hàng
     void taoTaiKhoanKhachHang();
+    //kiểm tra usernam có bị trùng hay không
+    bool KiemTraUsernam(const std::vector<TaiKhoan*>& DSTK, const std::string& username);
 	// Tạo tài khoản nhân viên
 	void taoTaiKhoanNhanVien();
 	// Xóa tài khoản với mã tài khoản
@@ -26,6 +28,6 @@ public:
     // Đăng nhập
     TaiKhoan* dangNhap();
 	// Hiển thị danh sách khách hàng
-	void hienThiDSTaiKhoan();
+	void hienThiDSTaiKhoanKhachHang();
 	void hienThiDSTaiKhoanNhanVien();
 };

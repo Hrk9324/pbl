@@ -60,6 +60,8 @@ void QuanLy::suaMonAnTrongMenu(Menu& menu) {
 }
 
 void QuanLy::hienThiChucNang() {
+	Menu menu;
+	menu.Gioithieu();
 	cout << "---- CHUC NANG QUAN LY----" << endl;
 	cout << "1. Hien thi danh sach mon an" << endl;
 	cout << "2. Them mon an vao menu" << endl;

@@ -1,5 +1,7 @@
 #include "HoaDon.h"
 
+double doanhThuTong = 0;
+
 void HoaDon::themMonAn(MonAn monAn, int soLuong) {
 	danhSachMonAn.push_back({monAn, soLuong});
 }
@@ -31,9 +33,19 @@ void HoaDon::inHoaDon() {
 				<< setw(20) << to_string(monAn.first.getGia()) + " VND" << "|"
 				<< setw(4) << monAn.second << endl;
 		}
+
 		file << string(8 + 30 + 20 + 12 + 3, '-') << endl;
 		file << "Tong tien: " << tinhTongTien() << " VND" << endl;
 		cout << "In hoa don thanh cong vao file: HoaDon.txt" << endl;
 		file.close();
 	}
+}
+
+void HoaDon::ghiDoanhThu(int doanhThu) {
+    ofstream file("ThongKeDoanhThu.txt", ios::app);
+	// Mở file ở chế độ append để không mất dự liệu ghi vào trước đó
+    if (file.is_open()) {
+        file << "Doanh thu : " << doanhThu << " VND" << endl;
+        file.close();
+    }
 }
