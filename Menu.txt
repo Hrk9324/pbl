@@ -7,3 +7,4 @@
 7,ga nuong,100000 VND
 8,coca,15000 VND
 9,tra tac,10000 VND
+11,bun dau mam tom,35000 VND
