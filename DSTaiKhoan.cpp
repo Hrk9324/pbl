@@ -103,7 +103,7 @@ void DSTaiKhoan::taoTaiKhoanKhachHang() {
     string tenTaiKhoan, username, password;
     cout << "Nhap ten khach hang: ";
     getline(cin, tenTaiKhoan);
-    
+
     bool UsernameHopLe = false;
     while (!UsernameHopLe)
     {
@@ -121,9 +121,6 @@ void DSTaiKhoan::taoTaiKhoanKhachHang() {
             cout << "Username hop le" << endl;
         }
     }
-    
-    // cout << "Nhap username: ";
-    // getline(cin, username);
 
     cout << "Nhap password: ";
     password = getPassword();  // Dùng hàm để ẩn mật khẩu
@@ -240,16 +237,22 @@ TaiKhoan* DSTaiKhoan::dangNhap() {
 
     for (auto& kh : DSTK) {
         if (kh->getUsername() == username && kh->getPassword() == password) {
-
+            if (kh->getRole() == 0)
+            {
+                cout << "Dang nhap thanh cong cho khach hang: " << kh->getTenNguoiDung() << endl;
+            }
+            if (kh->getRole() == 1)
+            {
+                cout << "Dang nhap thanh cong cho nhan vien: " << kh->getTenNguoiDung() << endl;
+            }
+            if (kh->getRole() == 2)
+            {
+                cout << "Dang nhap thanh cong cho admin: " << kh->getTenNguoiDung() << endl;
+            }
             
-
-            cout << "Dang nhap thanh cong cho khach hang: " << kh->getTenNguoiDung() << endl;
             return kh;  // Trả về con trỏ đến khách hàng
         }
     }
-
-
-
     cout << "Username hoac password sai!" << endl;
     return nullptr;  // Trả về nullptr nếu đăng nhập không thành công
 
