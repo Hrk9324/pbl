@@ -1,9 +1,9 @@
-1,beafsteak,65000
-2,mi xao,30000
-3,com hen,20000
-4,bun hen,20000
-5,bun bo,25000
-6,pho,25000
-7,ga nuong,100000
-8,coca,10000
-9,tra tac,10000
+1,beafsteak,65000 VND
+2,mi xao,30000 VND
+3,com hen,20000 VND
+4,bun hen,20000 VND
+5,bun bo,25000 VND
+6,pho,25000 VND
+7,ga nuong,100000 VND
+8,coca,15000 VND
+9,tra tac,10000 VND

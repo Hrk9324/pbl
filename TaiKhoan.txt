@@ -4,3 +4,4 @@ S,3,nguyen duy han,duyhan,123
 U,4,guen nhat king,nhatking,123
 U,5,nguyen thanh binh,thanhbinh1,123
 U,6,nguyen duy han,duyhan2,123
+S,7,test1,test1,123
