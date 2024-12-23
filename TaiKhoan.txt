@@ -1,8 +1,6 @@
 A,888,I am admin,admin,123
-U,7,nhat king,test,123
-U,8,ngo nhatking,nnk,123
-U,9,ngo Nhat King,nnk2,123
-U,12,test,test,test
-S,12,guen nhat king,nhatking,123
-S,11,nguyen thanh binh,thanhbinh,123
-U,8,nguyen thanh binh,thanhbinh1,123
+S,2,nguyen thanh binh,thanhbinh,123
+S,3,nguyen duy han,duyhan,123
+U,4,guen nhat king,nhatking,123
+U,5,nguyen thanh binh,thanhbinh1,123
+U,6,nguyen duy han,duyhan2,123

@@ -1,9 +1,9 @@
-9992,pho ga,30000 VND
-3195,chao,20000 VND
-8441,bun_dau_mam_tom,40000 VND
-24,com_hen,15000 VND
-798,com_cuon,15000 VND
-7122,cari_ga,50000 VND
-1,Sushi,25000 VND
-9993,Bun Bo HUE,20000 VND
-9994,chao hen,20000 VND
+1,beafsteak,65000
+2,mi xao,30000
+3,com hen,20000
+4,bun hen,20000
+5,bun bo,25000
+6,pho,25000
+7,ga nuong,100000
+8,coca,10000
+9,tra tac,10000
