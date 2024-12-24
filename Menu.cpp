@@ -172,7 +172,7 @@ void Menu::goiMon(HoaDon &hoaDon) {
         }
     }
     if (!monTimThay) {
-        cout << "Ma mon khong hop le!\n";
+        cout << "Khong tim thay ma mon!\n";
     }   
 }
 

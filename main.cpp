@@ -9,7 +9,7 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 		menu.Gioithieu();
 		cout << "---- DANH SACH CHUC NANG ----\n";
 		cout << "1. Dang nhap\n";
-		cout << "2. Dang ky\n";
+		// cout << "2. Dang ky\n";
 		cout << "0. Thoat\n";
 		cout << "Nhap lua chon: ";
 		string choice_str;
@@ -24,9 +24,9 @@ bool working(DSTaiKhoan &DSTK, Menu &menu) {
 		case 1:
 			taiKhoanHienTai = DSTK.dangNhap();
 			break;
-		case 2:
-			DSTK.taoTaiKhoanKhachHang();
-			break;
+		// case 2:
+		// 	DSTK.taoTaiKhoanKhachHang();
+		// 	break;
 		case 0:
 			for (int i = 0; i <= 100; i++)
 			{
@@ -89,7 +89,6 @@ int main() {
 	menu.docMenuFromFile();
 	DSTaiKhoan DSTK;
 	DSTK.docDSTaiKhoanFromFile();
-	// menu.Gioithieu();
 	// Bắt đầu chương trình
 	while (working(DSTK, menu));
 	// Lưu dữ liệu

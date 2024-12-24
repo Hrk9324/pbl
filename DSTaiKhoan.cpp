@@ -58,18 +58,18 @@ void DSTaiKhoan::docDSTaiKhoanFromFile() {
 		getline(ss, username, ',');
 		getline(ss, password, '\n');
         TaiKhoan* kh;
-		// USA -> U(user), S(staff), A(admin)
-        if (role_str == "U") {
-			kh = new KhachHang();
-            kh->setRole(0);
+		// SA ->  S(staff), A(admin)
+        // if (role_str == "U") {
+		// 	kh = new KhachHang();
+        //     kh->setRole(0);
+        // }
+        if (role_str == "A") { 
+			kh = new QuanLy();
+            kh->setRole(0); 
         }
         else if (role_str == "S") { 
 			kh = new NhanVien();
             kh->setRole(1); 
-        }
-        else if (role_str == "A") { 
-			kh = new QuanLy();
-            kh->setRole(2); 
         }
         else {
 			kh = new TaiKhoan();
@@ -87,9 +87,8 @@ void DSTaiKhoan::ghiDSTaiKhoanToFile() {
     ofstream file("TaiKhoan.txt");
     if (file.is_open()) {
         for (const auto& kh : DSTK) {
-			if (kh->getRole() == 0) file << "U,";
+			if (kh->getRole() == 0) file << "A,";
 			else if (kh->getRole() == 1) file << "S,";
-			else if (kh->getRole() == 2) file << "A,";
             file << kh->getMaTaiKhoan() << ","
                 << kh->getTenNguoiDung() << ","
                 << kh->getUsername() << ","
@@ -99,10 +98,49 @@ void DSTaiKhoan::ghiDSTaiKhoanToFile() {
     }
 }
 
-void DSTaiKhoan::taoTaiKhoanKhachHang() {
+// void DSTaiKhoan::taoTaiKhoanKhachHang() {
+//     string tenTaiKhoan, username, password;
+//     cout << "Nhap ten khach hang: ";
+//     getline(cin, tenTaiKhoan);
+
+//     bool UsernameHopLe = false;
+//     while (!UsernameHopLe)
+//     {
+//         cout << "Nhap username: ";
+//         getline(cin, username);
+
+//         if (KiemTraUsernam(DSTK, username))
+//         {
+//             cout << "username da ton tai!" << endl;
+//             cout << "nhap username khac" << endl;
+//         }
+//         else
+//         {
+//             UsernameHopLe = true;
+//             cout << "Username hop le" << endl;
+//         }
+//     }
+
+//     cout << "Nhap password: ";
+//     password = getPassword();  // Dùng hàm để ẩn mật khẩu
+
+//     TaiKhoan* kh = new KhachHang();
+// 	kh->setRole(0);
+// 	kh->setMaTaiKhoan(DSTK.size() + 1);
+// 	kh->setTenNguoiDung(tenTaiKhoan);
+// 	kh->setUsername(username);
+// 	kh->setPassword(password);
+
+//     DSTK.push_back(kh);
+// 	ghiDSTaiKhoanToFile();
+//     cout << "Tao tai khoan khach hang thanh cong!" << endl;
+// }
+
+void DSTaiKhoan::taoTaiKhoanNhanVien() {
     string tenTaiKhoan, username, password;
-    cout << "Nhap ten khach hang: ";
+    cout << "Nhap ten nhan vien: ";
     getline(cin, tenTaiKhoan);
+    cout << tenTaiKhoan << endl;
 
     bool UsernameHopLe = false;
     while (!UsernameHopLe)
@@ -122,29 +160,6 @@ void DSTaiKhoan::taoTaiKhoanKhachHang() {
         }
     }
 
-    cout << "Nhap password: ";
-    password = getPassword();  // Dùng hàm để ẩn mật khẩu
-
-    TaiKhoan* kh = new KhachHang();
-	kh->setRole(0);
-	kh->setMaTaiKhoan(DSTK.size() + 1);
-	kh->setTenNguoiDung(tenTaiKhoan);
-	kh->setUsername(username);
-	kh->setPassword(password);
-
-    DSTK.push_back(kh);
-	ghiDSTaiKhoanToFile();
-    cout << "Tao tai khoan khach hang thanh cong!" << endl;
-}
-
-void DSTaiKhoan::taoTaiKhoanNhanVien() {
-    string tenTaiKhoan, username, password;
-    cout << "Nhap ten nhan vien: ";
-    getline(cin, tenTaiKhoan);
-    cout << tenTaiKhoan << endl;
-
-    cout << "Nhap username: ";
-    getline(cin, username);
     cout << username << endl;
 
     cout << "Nhap password: ";
@@ -237,15 +252,11 @@ TaiKhoan* DSTaiKhoan::dangNhap() {
 
     for (auto& kh : DSTK) {
         if (kh->getUsername() == username && kh->getPassword() == password) {
-            if (kh->getRole() == 0)
-            {
-                cout << "Dang nhap thanh cong cho khach hang: " << kh->getTenNguoiDung() << endl;
-            }
             if (kh->getRole() == 1)
             {
                 cout << "Dang nhap thanh cong cho nhan vien: " << kh->getTenNguoiDung() << endl;
             }
-            if (kh->getRole() == 2)
+            else if (kh->getRole() == 0)
             {
                 cout << "Dang nhap thanh cong cho admin: " << kh->getTenNguoiDung() << endl;
             }
