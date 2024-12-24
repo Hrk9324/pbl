@@ -8,3 +8,6 @@
 8,coca,15000 VND
 9,tra tac,10000 VND
 11,bun dau mam tom,35000 VND
+12,aquafina,5000 VND
+13,7 up,10000 VND
+14,sprite,10000 VND
