@@ -36,12 +36,12 @@ void HoaDon::inHoaDonConsole() {
 	cout << "Tong tien: " << tinhTongTien() << " VND" << endl;
 }
 
-void HoaDon::inHoaDon() {
+void HoaDon::inHoaDon(string name) {
 	ofstream file("HoaDon.txt");
 	if (file.is_open()) {
 		//thêm vào tên người tạo hóa đơn.
-
 		file << "Thong tin hoa don:" << endl;
+		file << "Nhan vien: " << name;
 		file << left << setw(8) << "Ma Mon" << "|"
 			<< setw(30) << "Ten Mon" << "|"
 			<< setw(20) << "Gia" << "|"
@@ -59,10 +59,10 @@ void HoaDon::inHoaDon() {
 		cout << "In hoa don thanh cong vao file: HoaDon.txt" << endl;
 		file.close();
 	}
-	// inHoaDonConsole();
+	inHoaDonConsole();
 }
 
-void HoaDon::ghiDoanhThu(int doanhThu) {
+void HoaDon::ghiDoanhThu(string name, int doanhThu) {
 	
     ofstream file("ThongKeDoanhThu.txt", ios::app);
 	// Mở file ở chế độ append để không mất dự liệu ghi vào trước đó
